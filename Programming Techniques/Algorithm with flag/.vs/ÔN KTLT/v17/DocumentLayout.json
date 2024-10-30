@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Asus\\Desktop\\Code_B\u00E0i t\u1EADp\\\u00D4N KTLT\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B8326B0E-C6A0-4DE6-B7E0-380BA31D2EB8}|\u00D4N KTLT\\\u00D4N KTLT.vcxproj|C:\\Users\\Asus\\Desktop\\Code_B\u00E0i t\u1EADp\\\u00D4N KTLT\\\u00D4N KTLT\\chuongtrinh.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B8326B0E-C6A0-4DE6-B7E0-380BA31D2EB8}|\u00D4N KTLT\\\u00D4N KTLT.vcxproj|solutionrelative:\u00D4N KTLT\\chuongtrinh.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "chuongtrinh.cpp",
+              "DocumentMoniker": "C:\\Users\\Asus\\Desktop\\Code_B\u00E0i t\u1EADp\\\u00D4N KTLT\\\u00D4N KTLT\\chuongtrinh.cpp",
+              "RelativeDocumentMoniker": "\u00D4N KTLT\\chuongtrinh.cpp",
+              "ToolTip": "C:\\Users\\Asus\\Desktop\\Code_B\u00E0i t\u1EADp\\\u00D4N KTLT\\\u00D4N KTLT\\chuongtrinh.cpp",
+              "RelativeToolTip": "\u00D4N KTLT\\chuongtrinh.cpp",
+              "ViewState": "AgIAALkAAAAAAAAAAAAAAAgAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-27T12:56:22.73Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
