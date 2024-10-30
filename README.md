@@ -1,2 +1,11 @@
-# Study-C-with-HARUTO
-This is a list of code about my code in the university. Nice to meet you!
+- 👋 Hi, I’m Haruto
+- 👀 I’m interested in learn new things.
+- 🌱 I’m currently learning C++
+- 😄 Pronouns: Haruto
+- ⚡ Fun fact: I like playing video games such as Wuthering Waves.
+- - Nice to meet you!
+
+<!---
+Haruto2804/Haruto2804 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+You can click the Preview link to take a look at your changes.
+--->
