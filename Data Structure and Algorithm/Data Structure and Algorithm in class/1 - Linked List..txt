@@ -1,0 +1,265 @@
+#pragma once
+#include <iostream>
+using namespace std;
+struct Node {
+	int data;
+	Node* next;
+};
+typedef struct Node Node;
+Node* makeNode() {
+	int x;
+	cout << "\nNhap gia tri cho node: ";
+	cin >> x;
+	Node* newNode = new Node();
+	newNode->data = x;
+	newNode->next = NULL;
+	return newNode;
+}
+Node* makeNode(int x) {
+	Node* newNode = new Node();
+	newNode->data = x;
+	newNode->next = NULL;
+	return newNode;
+}
+void duyetDSLK(Node* head) {
+	cout << "\nSau khi duyet: ";
+	while (head != NULL) {
+		cout << head->data << " ";
+		head = head->next;
+	}
+}
+void deleteList(Node** head) {
+	Node* temp = *head;
+	Node* nextNode;
+	if (*head == NULL) {
+		cout << "\nDanh sach da rong, khong can phai xoa nua!";
+		return;
+	}
+	while (temp != NULL) {
+		nextNode = temp->next; // cho nextNode nam giu dia chi cua thang tiep theo
+		delete temp; // xoa thang hien tai di
+		temp = nextNode; // cho con tro di chuyen toi thang tiep theo
+	}
+	delete *head;
+}
+void pushBack(Node** head) {
+	Node* newNode = makeNode();
+	Node* temp = *head;
+	if (*head == NULL) {
+		*head = newNode;
+		return;
+	}
+	while (temp->next != NULL) {
+		temp = temp->next;
+	}
+	temp->next = newNode;
+}
+void pushBack(Node** head,int x) {
+	Node* newNode = makeNode(x);
+	Node* temp = *head;
+	if (*head == NULL) {
+		*head = newNode;
+		return;
+	}
+	while (temp->next != NULL) {
+		temp = temp->next;
+	}
+	temp->next = newNode;
+}
+void sapXepDSLK(Node** head) {
+	for (Node* p = *head; p != NULL; p=p->next) {
+		for (Node* q = p->next; q != NULL; q=q->next) {
+			if (p->data > q->data) { // tang dan, be->lon
+				swap(p->data, q->data);
+			}
+		}
+	}
+	
+}
+void tinhTongDSLK(Node*head) {
+	int tong = 0;
+	Node* temp = head;
+	while (temp != NULL) {
+		tong += temp->data;
+		temp = temp->next;
+	}
+	cout << "\nTong cua danh sach lien ket la: " << tong;
+}
+void max(Node* head) {
+	Node* p = head;
+	if (p == NULL) {
+		cout << "Mang rong, khong the tim MAX";
+		return;
+	}
+	int max = p->data;
+	for (p=p->next; p->next != NULL; p = p->next) {
+		if (p->data > max) {
+			max = p->data;
+		}
+	}
+	cout << "\nMAX cua danh sach lien ket la: " << max;
+}
+void demSoChan(Node* head) {
+	int dem = 0;
+	Node* temp = head;
+	while (temp != NULL) {
+		if (temp->data % 2 == 0) {
+			dem++;
+		}
+		temp = temp->next;
+	}
+	cout << "\nSo chan trong danh sach co so luong la " << dem++;
+}
+void tongLe(Node* head) {
+	int tongLe = 0;
+	Node* temp = head;
+	while (temp != NULL) {
+		if (temp->data % 2 != 0) {
+			tongLe += temp->data;
+		}
+		temp = temp->next;
+	}
+	cout << "\nTong cua cac so le trong danh sach lien ket la: " << tongLe;
+}
+bool checkSoNguyenTo(int n) {
+	if (n < 2) {
+		return false;
+	}
+	for (int i = 2; i * i <= n; i++) {
+		if (n % i == 0) {
+			return false;
+		}
+	}
+	return true;
+}
+void demSNT(Node* head) {
+	Node* temp = head;
+	int dem = 0;
+	while (temp != NULL) {
+		if (checkSoNguyenTo(temp->data))
+			dem++;
+		temp = temp->next;
+	}
+	cout << "\nSo nguyen to co trong DSLK la " << dem;
+}
+void noiDSLK(Node** head1, Node** head2) {
+	if (*head1 == NULL) {
+		*head1 = *head2;
+		return;
+	}
+	Node* temp = *head1;
+	while (temp->next != NULL) {
+		temp = temp->next;
+	}
+	temp->next = *head2;
+}
+void themList(Node**head) {
+	int node;
+	cout << "\nNhap so luong cua node muon them vao list: ";
+	cin >> node;
+	for (int i = 0; i < node; i++) {
+		pushBack(head);
+	}
+}
+void xoaDau(Node** head) {
+	Node* p = *head;
+	*head = (*head)->next;
+	delete p;
+	cout << "Đã xóa node đầu tiên." << endl;
+}
+void xoaSoNguyenDauTien(Node** head) { // nghia la xoa x trong danh sach
+	int x;
+	cout << "\nNhap so nguyen can xoa: ";
+	cin >> x;
+	Node* p=*head;
+	Node* q=*head;
+	Node* nextNode;
+	if (p ->data == x) {
+		xoaDau(head);
+		return;
+	}
+	
+	while (p->next != NULL && p->data != x) {
+		q = p;
+		p = p->next;
+	}
+	nextNode = p->next;
+	delete p;
+	q->next = nextNode;
+}
+void chenDSLK(Node** head) { //chen xong roi sap xep theo thu tu tang dan
+	cout << "\nGia tri cua node can chen: " << endl;
+	Node* newNode = makeNode();
+	newNode->next = *head;
+	*head = newNode;
+	sapXepDSLK(head);
+}
+void splistDSLK1(Node* head, Node** head1Chan, Node** head2Le)  { // cach 1. cap phat them vung nho, danh sach ban dau van duoc bao ton
+	Node* temp = head;
+	if (head == NULL) {
+		cout << "\nDanh sach rong!";
+		return;
+	}
+	while (temp != NULL) {
+		if (temp->data % 2 == 0) { //so chan
+			pushBack(head1Chan, temp->data);
+		}
+		else {
+			pushBack(head2Le, temp->data);
+		}
+		temp = temp->next;
+	}
+	cout << "\nMang chan ";
+	duyetDSLK(*head1Chan);
+	cout << "\nMang le ";
+	duyetDSLK(*head2Le);
+}
+void tronDanhSach(Node** head, Node** head1, Node** head2) { // cap phat them vung nho, 2 danh dau con
+	if (*head1 == NULL) {
+		*head = *head2;
+		return;
+	}
+	else if (*head2 == NULL) {
+		*head = *head1;
+		return;
+	}
+	sapXepDSLK(head1);
+	sapXepDSLK(head2);
+	Node* temp = *head1;
+	while (temp->next != NULL) {
+		temp = temp->next;
+	}
+	temp->next = *head2;
+	*head = *head1;
+}
+void main() {
+	int node;
+	Node* head = NULL;
+	Node* head1 = NULL;
+	Node* head2 = NULL;
+	duyetDSLK(head);
+	deleteList(&head);
+	duyetDSLK(head);
+	sapXepDSLK(&head);
+	duyetDSLK(head);
+	tinhTongDSLK(head);
+	max(head);
+	duyetDSLK(head);
+	demSoChan(head);
+	tongLe(head);
+	demSNT(head);
+	themList(&head1);
+	themList(&head2);
+	duyetDSLK(head1);
+	duyetDSLK(head2);
+	cout << "\n===========================" << endl;
+	noiDSLK(&head, &head2);
+	duyetDSLK(head);
+	xoaSoNguyenDauTien(&head);
+	duyetDSLK(head);
+	chenDSLK(&head); 
+	duyetDSLK(head);
+	splistDSLK1(head, &head1, &head2);
+	tronDanhSach(&head, &head1, &head2);
+	duyetDSLK(head);
+}

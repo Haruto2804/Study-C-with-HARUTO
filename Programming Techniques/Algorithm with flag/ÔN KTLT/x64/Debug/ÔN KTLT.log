@@ -1,8 +1,0 @@
-﻿  chuongtrinh.cpp
-C:\Users\Asus\Desktop\ÔN KTLT\ÔN KTLT\chuongtrinh.cpp(139,14): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\Asus\Desktop\ÔN KTLT\ÔN KTLT\chuongtrinh.cpp(149,26): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Asus\Desktop\ÔN KTLT\ÔN KTLT\chuongtrinh.cpp(197,6): warning C4326: return type of 'main' should be 'int' instead of 'void'
-C:\Users\Asus\Desktop\ÔN KTLT\ÔN KTLT\chuongtrinh.cpp(255,6): error C2086: 'int max': redefinition
-      C:\Users\Asus\Desktop\ÔN KTLT\ÔN KTLT\chuongtrinh.cpp(221,6):
-      see declaration of 'max'
-  
