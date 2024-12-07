@@ -2,7 +2,7 @@
 - 👀 I’m interested in learn new things.
 - 🌱 I’m currently learning C++
 - 😄 Pronouns: Haruto
-- ⚡ Fun fact: I like playing video games such as Wuthering Waves.
+- ⚡ Fun fact: I like playing video games such as Nikki Infinity
 - - Nice to meet you!
 
 <!---
