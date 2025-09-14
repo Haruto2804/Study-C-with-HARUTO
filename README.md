@@ -1,18 +1,7 @@
-# 📘 Thư mục Code C++ (Học ở Trường)
+# 📘 Code C++ Học Tập
 
-Thư mục này được sử dụng để lưu trữ các bài tập và project C++ trong quá trình học tập tại trường.  
-Mục đích là tổng hợp lại toàn bộ mã nguồn, dễ dàng quản lý và tham khảo khi cần.
+Đây là nơi mình lưu trữ các bài tập và project C++ trong quá trình học ở trường.  
+Mục đích là tổng hợp lại kiến thức, rèn luyện kỹ năng lập trình và thuận tiện cho việc ôn tập sau này.  
 
-## 📑 Cấu trúc thư mục
-- `baitap/` : Chứa các bài tập nhỏ theo từng chương hoặc từng buổi học.
-- `ontap/` : Lưu code dùng để ôn tập trước kiểm tra hoặc thi.
-- `project/` : Các bài tập lớn hoặc project môn học.
-- `docs/` : Tài liệu hướng dẫn, đề bài hoặc ghi chú học tập.
-
-## 🛠️ Cách sử dụng
-1. Mỗi bài tập nên được lưu trong một file `.cpp` riêng, có tên gợi nhớ nội dung.  
-   Ví dụ: `baitap1_hello.cpp`, `baitap2_mang.cpp`.
-2. Để biên dịch code, có thể dùng g++:
-   ```bash
-   g++ baitap1_hello.cpp -o baitap1
-   ./baitap1
+---
+✍️ *Repo này mang tính chất học tập và tham khảo.*
