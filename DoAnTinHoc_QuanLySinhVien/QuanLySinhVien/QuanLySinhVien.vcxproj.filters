@@ -26,5 +26,14 @@
     <ClCompile Include="chuongtrinh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="formatOutput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SinhVien.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DateUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

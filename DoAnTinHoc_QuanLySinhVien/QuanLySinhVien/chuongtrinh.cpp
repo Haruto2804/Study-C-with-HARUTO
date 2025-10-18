@@ -5,7 +5,7 @@ int main() {
 
     //SinhVien sv[8100]; // nếu dùng mảng thì
     AVLTree dsSV;
-    for (int i = 0;i < 70000;i++) {
+    for (int i = 0;i < 10;i++) {
         SinhVien sv; // tạo 1 đối tượng sinh viên
         sv.taoNgauNhienDuLieuSinhVien(); // nhập ngẫu nhiên thông tin sinh viên
         dsSV.insert(sv);
