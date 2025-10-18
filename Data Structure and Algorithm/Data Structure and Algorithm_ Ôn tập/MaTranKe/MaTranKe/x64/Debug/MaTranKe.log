@@ -1,0 +1,4 @@
+﻿  caidat.cpp
+C:\Users\chodi\OneDrive\Máy tính\code\MaTranKe\MaTranKe\caidat.cpp(24,14): warning C4477: 'fprintf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'int *'
+C:\Users\chodi\OneDrive\Máy tính\code\MaTranKe\MaTranKe\caidat.cpp(24,14): warning C4313: 'fprintf': '%d' in format string conflicts with argument 1 of type 'int *'
+  MaTranKe.vcxproj -> C:\Users\chodi\OneDrive\Máy tính\code\MaTranKe\x64\Debug\MaTranKe.exe

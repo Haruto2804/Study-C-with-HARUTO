@@ -1,0 +1,3 @@
+﻿  caidat.cpp
+C:\Users\chodi\OneDrive\Máy tính\code\SINHVIEN\SINHVIEN\caidat.cpp(25,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  SINHVIEN.vcxproj -> C:\Users\chodi\OneDrive\Máy tính\code\SINHVIEN\x64\Debug\SINHVIEN.exe

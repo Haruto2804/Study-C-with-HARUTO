@@ -1,0 +1,6 @@
+﻿  chuongtrinh.cpp
+C:\Users\chodi\OneDrive\Máy tính\code\CacThuatToanTimDuongDiNganNhat\thuatoantimduongdingannhat\thuatoantimduongdingannhat\thuvien.h(4,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  (compiling source file 'chuongtrinh.cpp')
+  
+chuongtrinh.obj : error LNK2005: "int * parent" (?parent@@3PAHA) already defined in caidat.obj
+C:\Users\chodi\OneDrive\Máy tính\code\CacThuatToanTimDuongDiNganNhat\thuatoantimduongdingannhat\x64\Debug\thuatoantimduongdingannhat.exe : fatal error LNK1169: one or more multiply defined symbols found

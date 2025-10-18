@@ -1,0 +1,3 @@
+﻿  caidat.cpp
+C:\Users\chodi\OneDrive\Máy tính\code\ArrayEdge\ArrayEdge\caidat.cpp(103,1): warning C4715: 'DFS': not all control paths return a value
+  ArrayEdge.vcxproj -> C:\Users\chodi\OneDrive\Máy tính\code\ArrayEdge\x64\Debug\ArrayEdge.exe
