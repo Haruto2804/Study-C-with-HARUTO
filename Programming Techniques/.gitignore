@@ -1,41 +1,25 @@
-# Bỏ qua các thư mục và file sinh ra bởi Visual Studio
-## Thư mục cache và cấu hình IDE
-.vs/
-*.vcxproj.user
-*.suo
-*.sln.idef
-*.db
+# Bỏ qua tất cả file và thư mục
+*
+*/
 
-## Thư mục build (biên dịch)
-[Dd]ebug/
-[Rr]elease/
-x64/
-x86/
-bin/
-obj/
+# Ngoại lệ (KHÔNG bỏ qua) thư mục gốc (root directory)
+!/
 
-## File trung gian và đầu ra
-*.obj
-*.ilk
-*.pdb
-*.optr
-*.log
-*.tlog
-*.idb
-*.exe
-*.dll
-*.exp
-*.lib
+# Ngoại lệ (KHÔNG bỏ qua) các file mã nguồn (.h và .cpp)
+!*.h
+!*.cpp
+!*.txt
 
-## File cache precompiled headers
-*.ipch
-*.aps
-*.ncb
-*.bsc
-*.sbr
+# Ngoại lệ (KHÔNG bỏ qua) các file cấu hình Visual Studio Project CẦN THIẾT
+# (Cần thiết để người khác có thể mở và build project)
+!*.sln
+!*.vcxproj
+!*.vcxproj.filters
 
-# Bỏ qua thư mục packages (nếu có sử dụng NuGet)
-packages/
+# Ngoại lệ (KHÔNG bỏ qua) file .gitignore này
+!.gitignore
 
-# Nếu có file database SQLite (ví dụ)
-*.db
+# Ngoại lệ cho các thư mục quan trọng chứa file .cpp/.h (nếu có sub-folder)
+# Ví dụ: nếu bạn có thư mục src/
+# !src/
+# !src/**
