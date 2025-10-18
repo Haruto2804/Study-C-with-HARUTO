@@ -1,0 +1,47 @@
+# Ignore Visual Studio temporary files, build results, and cache
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build folders
+x64/
+x86/
+build/
+Release/
+Debug/
+[Bb]in/
+[Oo]bj/
+
+# IntelliSense cache files
+*.ipch
+
+# Others
+*.log
+*.tlog
+*.lastbuildstate
+*.pch
+*.pdb
+*.obj
+*.tmp
+*.ilk
+*.exe
+*.dll
+
+# Ignore user-specific files
+*.aps
+*.ncb
+*.opensdf
+*.sdf
+*.cachefile
+
+# Ignore backup and temporary files
+*.bak
+*.tmp
+*.old
+*.log
+
+# Ignore operating system files
+Thumbs.db
+Desktop.ini
