@@ -64,8 +64,10 @@ public:
 
 
 	// dùng hàm bọc để dùng cho main sau khi gọi hàm này thì hàm bọc sẽ gọi hàm insert ở dưới
-	void insert(SinhVien data);
-	NodePtr insert(NodePtr T, SinhVien data); // hàm chèn Sinh viên vào cây AVL
+	void insertSV(SinhVien data);
+	NodePtr insertSV(NodePtr T, SinhVien data); // hàm chèn Sinh viên vào cây AVL
+	void deleteSV(string maSVCanXoa);
+	NodePtr deleteSV(NodePtr T, string maSVCanXoa);
 	NodePtr createNode(SinhVien data);
 	int height(NodePtr T); // tính chiều cao tại nốt đang xét
 	int getBalance(NodePtr T);
@@ -87,3 +89,4 @@ bool checkNamNhuan(int year);
 int layNgayTrongThang(int month, int year);
 void printHeader();
 void printLine();
+NodePtr findMAX(NodePtr T);

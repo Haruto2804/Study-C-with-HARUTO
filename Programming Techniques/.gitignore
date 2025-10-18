@@ -1,47 +1,41 @@
-# Ignore Visual Studio temporary files, build results, and cache
+# Bỏ qua các thư mục và file sinh ra bởi Visual Studio
+## Thư mục cache và cấu hình IDE
 .vs/
+*.vcxproj.user
 *.suo
-*.user
-*.userosscache
-*.sln.docstates
+*.sln.idef
+*.db
 
-# Build folders
+## Thư mục build (biên dịch)
+[Dd]ebug/
+[Rr]elease/
 x64/
 x86/
-build/
-Release/
-Debug/
-[Bb]in/
-[Oo]bj/
+bin/
+obj/
 
-# IntelliSense cache files
-*.ipch
-
-# Others
+## File trung gian và đầu ra
+*.obj
+*.ilk
+*.pdb
+*.optr
 *.log
 *.tlog
-*.lastbuildstate
-*.pch
-*.pdb
-*.obj
-*.tmp
-*.ilk
+*.idb
 *.exe
 *.dll
+*.exp
+*.lib
 
-# Ignore user-specific files
+## File cache precompiled headers
+*.ipch
 *.aps
 *.ncb
-*.opensdf
-*.sdf
-*.cachefile
+*.bsc
+*.sbr
 
-# Ignore backup and temporary files
-*.bak
-*.tmp
-*.old
-*.log
+# Bỏ qua thư mục packages (nếu có sử dụng NuGet)
+packages/
 
-# Ignore operating system files
-Thumbs.db
-Desktop.ini
+# Nếu có file database SQLite (ví dụ)
+*.db
