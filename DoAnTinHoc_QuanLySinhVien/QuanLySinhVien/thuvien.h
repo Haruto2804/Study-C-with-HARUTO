@@ -4,13 +4,18 @@
 #include <random> // thư viện cho việc tạo sinh số ngẫu nhiên
 #include "cmath" // thư viện cho việc làm tròn (round)
 #include <vector>
-#include "LinkedList.h"
-#include "MonHoc.h"
 using namespace std;
+struct MonHoc {
+	string maMon;
+	string tenMon;
+	int soTinChi;
+	double tongKetMon; // Điểm tổng kết cuối cùng của môn
+};
+
 class SinhVien {
 private:
 	string hoTenSV, maSV, ngaySinh;
-	LinkedList DSMonHoc;
+	std::vector<MonHoc> DSMonHoc;
 	
 public:
 	static int counter;
@@ -20,8 +25,27 @@ public:
 
 
 
+	//tạo danh sách môn học
+	void taoDanhSachMonHoc();
+
+	//getter,setter
+	// lấy danh sách môn học ủa sinh viên đó
+	const vector<MonHoc>& getDSMonHoc() const {
+		return DSMonHoc;
+	}
 
 
+
+
+
+
+
+
+
+
+
+
+	void xuatMonHocCuaSinhVien(const SinhVien& sv);
 
 	// hàm nhập thông tin sinh viên
 	void nhapThongTinSinhVien();
@@ -34,7 +58,6 @@ public:
 
 	// hàm in thông tin của sinh viên
 	void inThongTinSinhVien();
-
 	// các hàm tạo dữ liệu ngẫu nhiên, để check kết quả cho nhanh
 	void taoMaSV();
 	void taoTenNgauNhien();
@@ -42,6 +65,8 @@ public:
 	void taoNgauNhienDuLieuSinhVien();
 
 	string getMaSV();
+	
+	// lấy data từ sinh viên
 	void printDataRow(int stt);
 };
 
@@ -52,6 +77,10 @@ struct Node{
 	int height;
 };
 
+
+
+void printMonHocHeader();
+void xuatMonHocTheoBang(MonHoc mh);
 
 typedef Node* NodePtr;
 
@@ -103,6 +132,9 @@ public:
 	void RNL(NodePtr T);
 	void LNR(NodePtr T);
 	void NLR(NodePtr T);
+
+	//xuất danh sách môn hoc theo maSV
+	void xuatDanhSachMonHocTheoMaSV(const string& maSV);
 };
 
 bool checkNamNhuan(int year);

@@ -127,7 +127,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="MonHoc.h" />
     <ClInclude Include="thuvien.h" />
   </ItemGroup>
   <ItemGroup>
@@ -135,9 +134,7 @@
     <ClCompile Include="chuongtrinh.cpp" />
     <ClCompile Include="DateUtils.cpp" />
     <ClCompile Include="formatOutput.cpp" />
-    <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="MonHoc.cpp" />
-    <ClCompile Include="LinkedList.h" />
     <ClCompile Include="SinhVien.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

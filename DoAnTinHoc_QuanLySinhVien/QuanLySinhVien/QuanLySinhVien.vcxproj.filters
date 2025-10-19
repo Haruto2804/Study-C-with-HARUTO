@@ -18,9 +18,6 @@
     <ClInclude Include="thuvien.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MonHoc.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="caidat.cpp">
@@ -40,12 +37,6 @@
     </ClCompile>
     <ClCompile Include="MonHoc.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LinkedList.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LinkedList.h">
-      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

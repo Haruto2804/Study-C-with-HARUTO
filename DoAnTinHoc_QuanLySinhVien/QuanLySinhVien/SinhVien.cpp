@@ -1,5 +1,4 @@
 ﻿#include "thuvien.h"
-
 // Tạo bộ sinh số ngẫu nhiên cho toàn bộ chương trình
 random_device rd; // Nguồn seed
 mt19937 gen(rd()); // Engine được khởi tạo MỘT LẦN
@@ -11,7 +10,76 @@ int SinhVien::counter = 0;
 // hàm tạo sinh viên
 SinhVien::SinhVien()
 {
+	this->taoDanhSachMonHoc();
 	taoNgauNhienDuLieuSinhVien();
+}
+
+void SinhVien::taoDanhSachMonHoc()
+{
+	MonHoc dataKhoiTao[] = {
+	   {"IE101", "Co so ha tang cong nghe thong tin", 3, 0.0},
+	   {"IE102", "Cac cong nghe nen", 3, 0.0},
+	   {"IE103", "Quan ly du an", 4, 0.0},
+	   {"IE104", "Internet va cong nghe Web", 4, 0.0},
+	   {"IE101", "Co so ha tang cong nghe thong tin", 3, 0.0}, // Môn lặp
+	   {"CS101", "Cau truc du lieu va giai thuat", 4, 0.0},
+	   {"CS102", "Lap trinh huong doi tuong", 4, 0.0},
+	   {"MA001", "Giai tich 1", 4, 0.0},
+	   {"MA002", "Dai so tuyen tinh", 4, 0.0},
+	   {"NT101", "Mang may tinh", 4, 0.0},
+	   {"CS111", "He dieu hanh", 4, 0.0},
+	   {"IS201", "He quan tri co so du lieu", 4, 0.0},
+	   {"PH001", "Vat ly 1", 3, 0.0},
+	   {"EN001", "Tieng Anh 1", 3, 0.0},
+	   {"SE101", "Nhap mon Cong nghe phan mem", 3, 0.0}
+	};
+
+
+	// lấy phần tử của mảng môn học
+	int n = sizeof(dataKhoiTao) / sizeof(MonHoc);
+
+
+
+
+
+	// tạo điểm tổng kết ngẫu nhiên
+	uniform_real_distribution<> distDiem(0.0, 10.0);
+
+
+
+	// thêm các môn học vào DSLK
+	for (int i = 0;i < n;i++) {
+		double diemNgauNhien = distDiem(gen);
+		diemNgauNhien = round(diemNgauNhien * 10.0) / 10.0;
+		dataKhoiTao[i].tongKetMon = diemNgauNhien;
+		this->DSMonHoc.push_back(dataKhoiTao[i]);
+	}
+}
+
+
+
+void SinhVien::xuatMonHocCuaSinhVien(const SinhVien& sv)
+{
+	const vector<MonHoc>& danhSachMH = sv.getDSMonHoc();
+	// 1. LÀM ĐẸP TIÊU ĐỀ CHÍNH (Căn đều với bảng)
+	// Chiều rộng bảng là 66 ký tự (đã tính khoảng trắng đầu dòng)
+	int totalWidth = 67;
+	string title = "DANH SACH MON HOC CUA SINH VIEN CO MA SO: " + getMaSV();
+
+	cout << "|\n  "; // Khoảng trắng đầu dòng
+	cout << setfill('-') << setw(totalWidth) << "" << setfill(' ') << endl;
+
+	// Căn giữa tiêu đề chính
+	int padding = (totalWidth - title.length()) / 2;
+	cout << " " << setw(padding) << right << " " << left << title << endl;
+
+
+	printMonHocHeader();
+	
+	//duyệt lấy dữ liệu từ DSLK (vector)
+	for (const MonHoc& mh : danhSachMH) {
+		xuatMonHocTheoBang(mh);
+	}
 }
 
 //định nghĩa hàm cho lớp Sinh viên
@@ -129,6 +197,9 @@ void SinhVien::taoNgauNhienDuLieuSinhVien()
 
 
 
+
+
+// xuất danh sách sinh viên-
 // Các hàm format ouput cho Danh sách sinh viên
 // Đặt độ rộng cố định cho từng cột
 #define COL_WIDTH_STT 5
@@ -171,6 +242,4 @@ void SinhVien::printDataRow(int stt) {
 	cout << left << setw(COL_WIDTH_DATE - 1) << this->ngaySinh << " ";
 	cout << "|";
 }
-
-
 

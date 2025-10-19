@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\chodi\\OneDrive\\M\u00E1y t\u00EDnh\\CTDL\\Study-C-with-HARUTO\\DoAnTinHoc_QuanLySinhVien\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B61BB7EE-6F77-40FE-8423-564811D5F04B}|QuanLySinhVien\\QuanLySinhVien.vcxproj|C:\\Users\\chodi\\OneDrive\\M\u00E1y t\u00EDnh\\CTDL\\Study-C-with-HARUTO\\DoAnTinHoc_QuanLySinhVien\\QuanLySinhVien\\SinhVien.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B61BB7EE-6F77-40FE-8423-564811D5F04B}|QuanLySinhVien\\QuanLySinhVien.vcxproj|solutionrelative:QuanLySinhVien\\SinhVien.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B61BB7EE-6F77-40FE-8423-564811D5F04B}|QuanLySinhVien\\QuanLySinhVien.vcxproj|C:\\Users\\chodi\\OneDrive\\M\u00E1y t\u00EDnh\\CTDL\\Study-C-with-HARUTO\\DoAnTinHoc_QuanLySinhVien\\QuanLySinhVien\\chuongtrinh.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B61BB7EE-6F77-40FE-8423-564811D5F04B}|QuanLySinhVien\\QuanLySinhVien.vcxproj|solutionrelative:QuanLySinhVien\\chuongtrinh.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -11,8 +15,8 @@
       "RelativeMoniker": "D:0:0:{B61BB7EE-6F77-40FE-8423-564811D5F04B}|QuanLySinhVien\\QuanLySinhVien.vcxproj|solutionrelative:QuanLySinhVien\\caidat.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B61BB7EE-6F77-40FE-8423-564811D5F04B}|QuanLySinhVien\\QuanLySinhVien.vcxproj|C:\\Users\\chodi\\OneDrive\\M\u00E1y t\u00EDnh\\CTDL\\Study-C-with-HARUTO\\DoAnTinHoc_QuanLySinhVien\\QuanLySinhVien\\SinhVien.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B61BB7EE-6F77-40FE-8423-564811D5F04B}|QuanLySinhVien\\QuanLySinhVien.vcxproj|solutionrelative:QuanLySinhVien\\SinhVien.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{B61BB7EE-6F77-40FE-8423-564811D5F04B}|QuanLySinhVien\\QuanLySinhVien.vcxproj|C:\\Users\\chodi\\OneDrive\\M\u00E1y t\u00EDnh\\CTDL\\Study-C-with-HARUTO\\DoAnTinHoc_QuanLySinhVien\\QuanLySinhVien\\MonHoc.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B61BB7EE-6F77-40FE-8423-564811D5F04B}|QuanLySinhVien\\QuanLySinhVien.vcxproj|solutionrelative:QuanLySinhVien\\MonHoc.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B61BB7EE-6F77-40FE-8423-564811D5F04B}|QuanLySinhVien\\QuanLySinhVien.vcxproj|C:\\Users\\chodi\\OneDrive\\M\u00E1y t\u00EDnh\\CTDL\\Study-C-with-HARUTO\\DoAnTinHoc_QuanLySinhVien\\QuanLySinhVien\\thuvien.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -26,56 +30,70 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "SinhVien.cpp",
               "DocumentMoniker": "C:\\Users\\chodi\\OneDrive\\M\u00E1y t\u00EDnh\\CTDL\\Study-C-with-HARUTO\\DoAnTinHoc_QuanLySinhVien\\QuanLySinhVien\\SinhVien.cpp",
               "RelativeDocumentMoniker": "QuanLySinhVien\\SinhVien.cpp",
               "ToolTip": "C:\\Users\\chodi\\OneDrive\\M\u00E1y t\u00EDnh\\CTDL\\Study-C-with-HARUTO\\DoAnTinHoc_QuanLySinhVien\\QuanLySinhVien\\SinhVien.cpp",
               "RelativeToolTip": "QuanLySinhVien\\SinhVien.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADUAAAAAAAAAAADgv0QAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-10-19T03:41:46.378Z",
+              "WhenOpened": "2025-10-19T04:27:04.598Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "thuvien.h",
               "DocumentMoniker": "C:\\Users\\chodi\\OneDrive\\M\u00E1y t\u00EDnh\\CTDL\\Study-C-with-HARUTO\\DoAnTinHoc_QuanLySinhVien\\QuanLySinhVien\\thuvien.h",
               "RelativeDocumentMoniker": "QuanLySinhVien\\thuvien.h",
               "ToolTip": "C:\\Users\\chodi\\OneDrive\\M\u00E1y t\u00EDnh\\CTDL\\Study-C-with-HARUTO\\DoAnTinHoc_QuanLySinhVien\\QuanLySinhVien\\thuvien.h",
               "RelativeToolTip": "QuanLySinhVien\\thuvien.h",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAADEAAAAAAAAAAAAiwEIAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-10-19T03:43:09.723Z",
+              "WhenOpened": "2025-10-19T04:33:06.499Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "caidat.cpp",
               "DocumentMoniker": "C:\\Users\\chodi\\OneDrive\\M\u00E1y t\u00EDnh\\CTDL\\Study-C-with-HARUTO\\DoAnTinHoc_QuanLySinhVien\\QuanLySinhVien\\caidat.cpp",
               "RelativeDocumentMoniker": "QuanLySinhVien\\caidat.cpp",
               "ToolTip": "C:\\Users\\chodi\\OneDrive\\M\u00E1y t\u00EDnh\\CTDL\\Study-C-with-HARUTO\\DoAnTinHoc_QuanLySinhVien\\QuanLySinhVien\\caidat.cpp",
               "RelativeToolTip": "QuanLySinhVien\\caidat.cpp",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAtwBgAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAEMBAAAAAAAAAAAiwFIBAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-10-19T03:41:32.08Z",
+              "WhenOpened": "2025-10-19T04:40:55.512Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
+              "Title": "MonHoc.cpp",
+              "DocumentMoniker": "C:\\Users\\chodi\\OneDrive\\M\u00E1y t\u00EDnh\\CTDL\\Study-C-with-HARUTO\\DoAnTinHoc_QuanLySinhVien\\QuanLySinhVien\\MonHoc.cpp",
+              "RelativeDocumentMoniker": "QuanLySinhVien\\MonHoc.cpp",
+              "ToolTip": "C:\\Users\\chodi\\OneDrive\\M\u00E1y t\u00EDnh\\CTDL\\Study-C-with-HARUTO\\DoAnTinHoc_QuanLySinhVien\\QuanLySinhVien\\MonHoc.cpp",
+              "RelativeToolTip": "QuanLySinhVien\\MonHoc.cpp",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABoAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-10-19T04:28:21.618Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "chuongtrinh.cpp",
               "DocumentMoniker": "C:\\Users\\chodi\\OneDrive\\M\u00E1y t\u00EDnh\\CTDL\\Study-C-with-HARUTO\\DoAnTinHoc_QuanLySinhVien\\QuanLySinhVien\\chuongtrinh.cpp",
               "RelativeDocumentMoniker": "QuanLySinhVien\\chuongtrinh.cpp",
               "ToolTip": "C:\\Users\\chodi\\OneDrive\\M\u00E1y t\u00EDnh\\CTDL\\Study-C-with-HARUTO\\DoAnTinHoc_QuanLySinhVien\\QuanLySinhVien\\chuongtrinh.cpp",
               "RelativeToolTip": "QuanLySinhVien\\chuongtrinh.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-10-19T02:32:58.328Z",
               "EditorCaption": ""

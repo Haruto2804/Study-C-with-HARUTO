@@ -305,6 +305,7 @@ void AVLTree::LNR(NodePtr T) {
 
 void AVLTree::NLR(NodePtr T)
 {
+	printHeader();
 	if (T != nullptr) {
 		LNR(T->left);
 
@@ -321,6 +322,21 @@ void AVLTree::NLR(NodePtr T)
 		if (T == this->head) {
 			stt_counter = 0;
 		}
+	}
+}
+
+
+
+// xuất danh sách điểm các môn theo mã sinh viên
+void AVLTree::xuatDanhSachMonHocTheoMaSV( const string& maSV)
+{
+	NodePtr p = search(maSV); // tìm sinh viên trong cây
+	if (p == NULL) {
+		return; // không tìm thấy
+	}
+	else {
+	
+		p->data.xuatMonHocCuaSinhVien(p->data);
 	}
 }
 
