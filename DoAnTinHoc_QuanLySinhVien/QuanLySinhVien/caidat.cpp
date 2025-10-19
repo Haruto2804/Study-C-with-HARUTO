@@ -15,7 +15,7 @@ void AVLTree::deleteTree(NodePtr T)
 		deleteTree(T->left); //left
 		deleteTree(T->right); // right;
 		delete T;
-		T = nullptr; 
+		T = nullptr;
 	}
 }
 
@@ -48,7 +48,7 @@ NodePtr AVLTree::insertSV(NodePtr T, SinhVien data)
 		}
 		// TH3: Nếu = là đã có sinh viên đó rồi nên không cần thêm nữa
 		else {
-			cout << "\nDa ton tai sinh vien co ma so la " << maSVData<<" trong danh sach!";
+			cout << "\nDa ton tai sinh vien co ma so la " << maSVData << " trong danh sach!";
 			return T;
 		}
 	}
@@ -165,7 +165,34 @@ NodePtr findMAX(NodePtr T) {
 	}
 	return findMAX(T->right);
 }
-// HÀM XÓA SINH VIÊN
+// HÀM BỌC CỦA HÀM TÌM KIẾM SINH VIÊN
+NodePtr AVLTree::search(string maSVCanTim)
+{
+	return search(this->head,maSVCanTim);
+}
+
+// HÀM TÌM SINH VIÊN THEO MÃ SỐ SINH VIÊN
+NodePtr AVLTree::search(NodePtr T, string maSVCanTim)
+{
+	if (T == nullptr) {
+		return T;
+	}
+	else {
+		string maSVCuaNut = T->data.getMaSV();
+		if (maSVCuaNut == maSVCanTim) {
+			return T;
+		}
+		else if (maSVCuaNut > maSVCanTim) {
+			return search(T->left, maSVCanTim);
+		}
+		else if (maSVCuaNut < maSVCanTim) {
+			return search(T->right, maSVCanTim);
+		}
+	}
+	return T;
+}
+
+
 //HÀM TẠO 1 NÚT SINH VIÊN
 NodePtr AVLTree::createNode(SinhVien data) {
 	NodePtr newNode = new Node();
@@ -244,7 +271,7 @@ void AVLTree::NLR()
 // duyệt giảm dần theo MSSV - LEFT - NODE - RIGHT
 void AVLTree::RNL(NodePtr T) {
 	if (T != nullptr) {
-	
+
 		// data muốn xuất
 		cout << "\n========================";
 		RNL(T->right);

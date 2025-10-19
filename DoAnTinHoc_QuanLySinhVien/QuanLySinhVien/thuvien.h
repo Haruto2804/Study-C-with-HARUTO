@@ -4,18 +4,29 @@
 #include <random> // thư viện cho việc tạo sinh số ngẫu nhiên
 #include "cmath" // thư viện cho việc làm tròn (round)
 #include <vector>
+#include "LinkedList.h"
+#include "MonHoc.h"
 using namespace std;
 class SinhVien {
 private:
 	string hoTenSV, maSV, ngaySinh;
-	double diemTB;
-	
+	LinkedList DSMonHoc;
 	
 public:
 	static int counter;
+
+	// hàm tạo
+	SinhVien();
+
+
+
+
+
+
 	// hàm nhập thông tin sinh viên
-	// hàm này để nhập tay
 	void nhapThongTinSinhVien();
+
+
 
 	// hàm này để nhập bằng cách truyền đối số
 	void nhapThongTinSinhVien(string hoTenSV, string maSV, string ngaySinh,double diemTB);
@@ -28,8 +39,8 @@ public:
 	void taoMaSV();
 	void taoTenNgauNhien();
 	void taoNgaySinh();
-	void taoDiemNgauNhien();
 	void taoNgauNhienDuLieuSinhVien();
+
 	string getMaSV();
 	void printDataRow(int stt);
 };
@@ -40,6 +51,7 @@ struct Node{
 	Node* right;
 	int height;
 };
+
 
 typedef Node* NodePtr;
 
@@ -54,7 +66,7 @@ public:
 	// vì là đang làm việc cấp phát bộ nhớ động, do đó cần tạo hàm hủy để giải phóng bộ nhớ, tránh tình trạng bị rò rỉ bộ nhớ (memory leak)
 	~AVLTree() {
 		deleteTree(this->head);
-		this->head == nullptr;
+		this->head = nullptr;
 	}
 
 	
@@ -66,12 +78,21 @@ public:
 	// dùng hàm bọc để dùng cho main sau khi gọi hàm này thì hàm bọc sẽ gọi hàm insert ở dưới
 	void insertSV(SinhVien data);
 	NodePtr insertSV(NodePtr T, SinhVien data); // hàm chèn Sinh viên vào cây AVL
+
 	void deleteSV(string maSVCanXoa);
 	NodePtr deleteSV(NodePtr T, string maSVCanXoa);
+	
+	NodePtr search(string maSVCanTim);
+	NodePtr search(NodePtr T, string maSVCanTim);
+
 	NodePtr createNode(SinhVien data);
+
 	int height(NodePtr T); // tính chiều cao tại nốt đang xét
+
 	int getBalance(NodePtr T);
+
 	NodePtr RotateRight(NodePtr T);
+
 	NodePtr RotateLeft(NodePtr T);
 
 
@@ -79,7 +100,6 @@ public:
 	void LNR(); // tăng dần theo mssv
 	void RNL();
 	void NLR();
-
 	void RNL(NodePtr T);
 	void LNR(NodePtr T);
 	void NLR(NodePtr T);
@@ -90,3 +110,4 @@ int layNgayTrongThang(int month, int year);
 void printHeader();
 void printLine();
 NodePtr findMAX(NodePtr T);
+

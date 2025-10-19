@@ -8,7 +8,11 @@ mt19937 gen(rd()); // Engine được khởi tạo MỘT LẦN
 int SinhVien::counter = 0;
 
 
-
+// hàm tạo sinh viên
+SinhVien::SinhVien()
+{
+	taoNgauNhienDuLieuSinhVien();
+}
 
 //định nghĩa hàm cho lớp Sinh viên
 void SinhVien::nhapThongTinSinhVien() {
@@ -21,8 +25,6 @@ void SinhVien::nhapThongTinSinhVien() {
 	cin >> this->maSV;
 	cout << "\nNhap ngay sinh cua sinh vien: ";
 	cin >> this->ngaySinh;
-	cout << "\nNhap diem trung binh cua sinh vien: ";
-	cin >> this->diemTB;
 	cin.ignore();
 }
 void SinhVien::nhapThongTinSinhVien(string hoTenSV, string maSV, string ngaySinh, double diemTB)
@@ -30,13 +32,11 @@ void SinhVien::nhapThongTinSinhVien(string hoTenSV, string maSV, string ngaySinh
 	this->hoTenSV = hoTenSV;
 	this->maSV = maSV;
 	this->ngaySinh = ngaySinh;
-	this->diemTB = diemTB;
 }
 void SinhVien::inThongTinSinhVien() {
 	cout << "\nHo ten sinh vien: " << this->hoTenSV;
 	cout << "\nMa sinh vien: " << this->maSV;
 	cout << "\nNgay sinh: " << this->ngaySinh;
-	cout << "\nDiem trung binh: " << this->diemTB;
 }
 void SinhVien::taoMaSV() {
 	counter++;
@@ -118,20 +118,59 @@ void SinhVien::taoNgaySinh()
 	this->ngaySinh = ngaySinhMoi;
 }
 
-void SinhVien::taoDiemNgauNhien()
-{
-	this->diemTB = 0;
-	uniform_real_distribution <> dist_diem(0.0, 10.0);
-	double diemTho = dist_diem(gen); // kết quả trả về có thể ở dạng 2.45678
-	// làm tròn 2 chữ số thập phân
-	double diemLamTron = round(diemTho * 100.0) / 100.0; // ví dụ: 2.45678 * 100 = round (245.678) = 245 /100 = 2.45
-	this->diemTB = diemLamTron;
-}
 
 void SinhVien::taoNgauNhienDuLieuSinhVien()
 {
 	taoMaSV();
 	taoNgaySinh();
 	taoTenNgauNhien();
-	taoDiemNgauNhien();
 }
+
+
+
+
+// Các hàm format ouput cho Danh sách sinh viên
+// Đặt độ rộng cố định cho từng cột
+#define COL_WIDTH_STT 5
+#define COL_WIDTH_MSSV 15
+#define COL_WIDTH_NAME 30
+#define COL_WIDTH_DATE 15
+#define COL_WIDTH_DIEM 10
+#define COL_TOTAL_WIDTH (COL_WIDTH_STT + COL_WIDTH_MSSV + COL_WIDTH_NAME + COL_WIDTH_DATE + COL_WIDTH_DIEM + 6) // Tổng độ rộng + khoảng cách
+
+void printLine() {
+	cout << "\n+" << setfill('-') << setw(COL_TOTAL_WIDTH) << "+";
+	cout << setfill(' '); // Trả lại fill mặc định
+}
+
+void printHeader() {
+	printLine();
+	cout << "\n|";
+	cout << left << setw(COL_WIDTH_STT) << " STT";
+	cout << "|";
+	cout << left << setw(COL_WIDTH_MSSV) << " MA SINH VIEN";
+	cout << "|";
+	cout << left << setw(COL_WIDTH_NAME) << " HO TEN";
+	cout << "|";
+	cout << left << setw(COL_WIDTH_DATE) << " NGAY SINH";
+	cout << "|";
+	cout << left << setw(COL_WIDTH_DIEM) << " DIEM TB";
+	cout << "|";
+	printLine();
+}
+
+void SinhVien::printDataRow(int stt) {
+	// In dòng dữ liệu của sinh viên
+	cout << "\n|";
+	cout << left << setw(COL_WIDTH_STT - 1) << stt << " "; // Căn phải STT
+	cout << "|";
+	cout << left << setw(COL_WIDTH_MSSV - 1) << this->maSV << " ";
+	cout << "|";
+	cout << left << setw(COL_WIDTH_NAME - 1) << this->hoTenSV << " ";
+	cout << "|";
+	cout << left << setw(COL_WIDTH_DATE - 1) << this->ngaySinh << " ";
+	cout << "|";
+}
+
+
+

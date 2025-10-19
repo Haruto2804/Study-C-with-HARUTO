@@ -1,5 +1,2 @@
-﻿  caidat.cpp
-C:\Users\chodi\OneDrive\Máy tính\CTDL\Study-C-with-HARUTO\DoAnTinHoc_QuanLySinhVien\QuanLySinhVien\thuvien.h(57,14): warning C4553: '==': result of expression not used; did you intend '='?
-  (compiling source file 'caidat.cpp')
-  
+﻿  chuongtrinh.cpp
   QuanLySinhVien.vcxproj -> C:\Users\chodi\OneDrive\Máy tính\CTDL\Study-C-with-HARUTO\DoAnTinHoc_QuanLySinhVien\x64\Debug\QuanLySinhVien.exe
