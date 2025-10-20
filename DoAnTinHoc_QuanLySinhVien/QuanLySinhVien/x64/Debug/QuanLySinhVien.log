@@ -1,4 +1,10 @@
-﻿  SinhVien.cpp
+﻿  DateUtils.cpp
+  Menu.cpp
+  MonHoc.cpp
+  SinhVien.cpp
 C:\Users\chodi\OneDrive\Máy tính\CTDL\Study-C-with-HARUTO\DoAnTinHoc_QuanLySinhVien\QuanLySinhVien\SinhVien.cpp(73,14): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\chodi\OneDrive\Máy tính\CTDL\Study-C-with-HARUTO\DoAnTinHoc_QuanLySinhVien\QuanLySinhVien\SinhVien.cpp(88,9): warning C4101: 'diemTB': unreferenced local variable
+  caidat.cpp
+  chuongtrinh.cpp
+  Generating Code...
   QuanLySinhVien.vcxproj -> C:\Users\chodi\OneDrive\Máy tính\CTDL\Study-C-with-HARUTO\DoAnTinHoc_QuanLySinhVien\x64\Debug\QuanLySinhVien.exe

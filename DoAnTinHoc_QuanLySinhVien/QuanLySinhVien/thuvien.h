@@ -14,46 +14,33 @@ struct MonHoc {
 
 class SinhVien {
 private:
-	string hoTenSV, maSV, ngaySinh;
+	string hoTenSV, maSV, ngaySinh, queQuan;
 	std::vector<MonHoc> DSMonHoc;
-	
+
 public:
 	static int counter;
 
 	// hàm tạo
 	SinhVien();
-
-
-
 	//tạo danh sách môn học
 	void taoDanhSachMonHoc();
 
 	//getter,setter
-	// lấy danh sách môn học ủa sinh viên đó
+	// lấy danh sách môn học ủa sinh viên đó - ko thay đổi dữ liệu môn học
 	const vector<MonHoc>& getDSMonHoc() const {
 		return DSMonHoc;
 	}
-
-
-
-
-
-
-
-
-
-
-
+	// update mon hoc cho sinh vien
+	vector<MonHoc>& getDSMonHocForUpdate() {
+		return DSMonHoc;
+	}
 
 	void xuatMonHocCuaSinhVien(const SinhVien& sv);
 
 	// hàm nhập thông tin sinh viên
 	void nhapThongTinSinhVien();
-
-
-
 	// hàm này để nhập bằng cách truyền đối số
-	void nhapThongTinSinhVien(string hoTenSV, string maSV, string ngaySinh,double diemTB);
+	void nhapThongTinSinhVien(string hoTenSV, string maSV, string ngaySinh, string queQuan);
 
 
 	// hàm in thông tin của sinh viên
@@ -63,11 +50,14 @@ public:
 	void taoTenNgauNhien();
 	void taoNgaySinh();
 	void taoNgauNhienDuLieuSinhVien();
+	void taoQueQuanNgauNhien();
 
 	string getMaSV();
-	
 	// lấy data từ sinh viên
 	void printDataRow(int stt);
+	double tinhDiemGPA()const;
+	string chuyenDoiSangXepLoai() const;
+	void resetDiemMonHoc();
 };
 
 struct Node{
@@ -124,14 +114,14 @@ public:
 
 	NodePtr RotateLeft(NodePtr T);
 
-
+	void updateDiemSV(const double &diemMoi, const string &maSV, const string& maMH);
 	// tạo hàm bọc cho LNR
 	void LNR(); // tăng dần theo mssv
 	void RNL();
-	void NLR();
+	void xuatDanhSachSinhVienTheoThuTuTangDanMSSV();
 	void RNL(NodePtr T);
 	void LNR(NodePtr T);
-	void NLR(NodePtr T);
+	void xuatDanhSachSinhVienTheoThuTuTangDanMSSV(NodePtr T);
 
 	//xuất danh sách môn hoc theo maSV
 	void xuatDanhSachMonHocTheoMaSV(const string& maSV);
@@ -142,4 +132,5 @@ int layNgayTrongThang(int month, int year);
 void printHeader();
 void printLine();
 NodePtr findMAX(NodePtr T);
+void showBasicMenu();
 

@@ -22,10 +22,10 @@ void printMonHocHeader() {
 void xuatMonHocTheoBang(MonHoc mh) {
 	cout << "  | " << left << setw(8) << mh.maMon
 		<< " | " << left << setw(35) << mh.tenMon
-		<< " | " << right << setw(3) << mh.soTinChi << " |"
+		<< " | " << left << setw(3) << mh.soTinChi << " |"
 
 		// Thêm cột điểm tổng kết (MỚI)
 		// fixed + setprecision(1): Luôn hiển thị 1 chữ số thập phân
 		// setw(7): Căn phải trong 7 ký tự
-		<< " | " << right << fixed << setprecision(1) << setw(7) << mh.tongKetMon << " |" << endl;
+		<< " | " << left << fixed << setprecision(1) << setw(7) << mh.tongKetMon << " |" << endl;
 }

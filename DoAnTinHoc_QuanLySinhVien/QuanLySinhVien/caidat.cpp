@@ -168,7 +168,7 @@ NodePtr findMAX(NodePtr T) {
 // HÀM BỌC CỦA HÀM TÌM KIẾM SINH VIÊN
 NodePtr AVLTree::search(string maSVCanTim)
 {
-	return search(this->head,maSVCanTim);
+	return search(this->head, maSVCanTim);
 }
 
 // HÀM TÌM SINH VIÊN THEO MÃ SỐ SINH VIÊN
@@ -191,6 +191,28 @@ NodePtr AVLTree::search(NodePtr T, string maSVCanTim)
 	}
 	return T;
 }
+
+//update diemSinhVien
+void AVLTree::updateDiemSV(const double& diemMoi, const string& maSV, const string& maMH)
+{
+	NodePtr foundSinhVien = search(maSV);
+	if (foundSinhVien) {
+		SinhVien &sv = foundSinhVien->data;
+		vector <MonHoc>& DsMonHocCuaSV = sv.getDSMonHocForUpdate();
+
+		// nhập mã môn học cần tìm
+		for (auto& monHoc : DsMonHocCuaSV) {
+			if (monHoc.maMon == maMH) {
+				monHoc.tongKetMon = diemMoi;
+
+			}
+		}
+	}
+	else {
+		cout << "\nKhông có sinh viên trong danh sách!";
+	}
+}
+
 
 
 //HÀM TẠO 1 NÚT SINH VIÊN
@@ -235,6 +257,8 @@ NodePtr AVLTree::RotateLeft(NodePtr T)
 	return x;
 }
 
+
+
 NodePtr AVLTree::RotateRight(NodePtr T)
 {
 	NodePtr x = T->left;
@@ -262,9 +286,9 @@ void AVLTree::RNL()
 	RNL(this->head);
 }
 
-void AVLTree::NLR()
+void AVLTree::xuatDanhSachSinhVienTheoThuTuTangDanMSSV()
 {
-	NLR(this->head);
+	xuatDanhSachSinhVienTheoThuTuTangDanMSSV(this->head);
 }
 
 
@@ -303,7 +327,9 @@ void AVLTree::LNR(NodePtr T) {
 	}
 }
 
-void AVLTree::NLR(NodePtr T)
+
+
+void AVLTree::xuatDanhSachSinhVienTheoThuTuTangDanMSSV(NodePtr T)
 {
 	printHeader();
 	if (T != nullptr) {
@@ -328,19 +354,17 @@ void AVLTree::NLR(NodePtr T)
 
 
 // xuất danh sách điểm các môn theo mã sinh viên
-void AVLTree::xuatDanhSachMonHocTheoMaSV( const string& maSV)
+void AVLTree::xuatDanhSachMonHocTheoMaSV(const string& maSV)
 {
 	NodePtr p = search(maSV); // tìm sinh viên trong cây
 	if (p == NULL) {
 		return; // không tìm thấy
 	}
 	else {
-	
+
 		p->data.xuatMonHocCuaSinhVien(p->data);
 	}
 }
-
-
 
 
 

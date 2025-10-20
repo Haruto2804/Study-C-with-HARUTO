@@ -93,18 +93,27 @@ void SinhVien::nhapThongTinSinhVien() {
 	cin >> this->maSV;
 	cout << "\nNhap ngay sinh cua sinh vien: ";
 	cin >> this->ngaySinh;
+	cout << "\nNhap Que quan cua sinh vien: ";
+	cin >> this->queQuan;
+	cin.ignore();
 	cin.ignore();
 }
-void SinhVien::nhapThongTinSinhVien(string hoTenSV, string maSV, string ngaySinh, double diemTB)
+void SinhVien::nhapThongTinSinhVien(string hoTenSV, string maSV, string ngaySinh, string queQuan)
 {
 	this->hoTenSV = hoTenSV;
 	this->maSV = maSV;
 	this->ngaySinh = ngaySinh;
+	this->queQuan = queQuan;
 }
 void SinhVien::inThongTinSinhVien() {
+
+	double gpa = tinhDiemGPA();
 	cout << "\nHo ten sinh vien: " << this->hoTenSV;
 	cout << "\nMa sinh vien: " << this->maSV;
 	cout << "\nNgay sinh: " << this->ngaySinh;
+	cout << "\nQue quan: " << this->queQuan;
+	cout << "\nDiem GPA: " << gpa;
+	cout << "\nXep loai: " << chuyenDoiSangXepLoai();
 }
 void SinhVien::taoMaSV() {
 	counter++;
@@ -187,11 +196,58 @@ void SinhVien::taoNgaySinh()
 }
 
 
+
+void SinhVien::taoQueQuanNgauNhien() {
+	std::string tinhThanh[] = {
+		// Các đơn vị được giữ lại tên hoặc tên mới
+		"Ha Noi",         // 1 (Thanh pho Ha Noi)
+		"Hue",            // 2 (Thanh pho Hue)
+		"Lai Chau",       // 3 (Tinh Lai Chau)
+		"Dien Bien",      // 4 (Tinh Dien Bien)
+		"Son La",         // 5 (Tinh Son La)
+		"Lang Son",       // 6 (Tinh Lang Son)
+		"Quang Ninh",     // 7 (Tinh Quang Ninh)
+		"Thanh Hoa",      // 8 (Tinh Thanh Hoa)
+		"Nghe An",        // 9 (Tinh Nghe An)
+		"Ha Tinh",        // 10 (Tinh Ha Tinh)
+		"Cao Bang",       // 11 (Tinh Cao Bang)
+
+		// Các đơn vị sau hợp nhất
+		"Tuyen Quang",    // 12 (Tinh Tuyen Quang)
+		"Lao Cai",        // 13 (Tinh Lao Cai)
+		"Thai Nguyen",    // 14 (Tinh Thai Nguyen)
+		"Phu Tho",        // 15 (Tinh Phu Tho)
+		"Bac Ninh",       // 16 (Tinh Bac Ninh)
+		"Hung Yen",       // 17 (Tinh Hung Yen)
+		"Hai Phong",      // 18 (Thanh pho Hai Phong)
+		"Ninh Binh",      // 19 (Tinh Ninh Binh)
+		"Quang Tri",      // 20 (Tinh Quang Tri)
+		"Da Nang",        // 21 (Thanh pho Da Nang)
+		"Quang Ngai",     // 22 (Tinh Quang Ngai)
+		"Gia Lai",        // 23 (Tinh Gia Lai)
+		"Khanh Hoa",      // 24 (Tinh Khanh Hoa)
+		"Lam Dong",       // 25 (Tinh Lam Dong)
+		"Dak Lak",        // 26 (Tinh Dak Lak)
+		"Ho Chi Minh",    // 27 (Thanh pho Ho Chi Minh)
+		"Dong Nai",       // 28 (Tinh Dong Nai)
+		"Tay Ninh",       // 29 (Tinh Tay Ninh)
+		"Can Tho",        // 30 (Thanh pho Can Tho)
+		"Vinh Long",      // 31 (Tinh Vinh Long)
+		"Dong Thap",      // 32 (Tinh Dong Thap)
+		"Ca Mau",         // 33 (Tinh Ca Mau)
+		"An Giang"        // 34 (Tinh An Giang)
+	};
+	size_t soTinhThanh = sizeof(tinhThanh) / sizeof(tinhThanh[0]);
+	uniform_int_distribution <> dist(0, 33);
+	int indexTinhThanhNgauNhien = dist(gen);
+	this->queQuan = tinhThanh[indexTinhThanhNgauNhien];
+}
 void SinhVien::taoNgauNhienDuLieuSinhVien()
 {
 	taoMaSV();
 	taoNgaySinh();
 	taoTenNgauNhien();
+	taoQueQuanNgauNhien();
 }
 
 
@@ -206,8 +262,8 @@ void SinhVien::taoNgauNhienDuLieuSinhVien()
 #define COL_WIDTH_MSSV 15
 #define COL_WIDTH_NAME 30
 #define COL_WIDTH_DATE 15
-#define COL_WIDTH_DIEM 10
-#define COL_TOTAL_WIDTH (COL_WIDTH_STT + COL_WIDTH_MSSV + COL_WIDTH_NAME + COL_WIDTH_DATE + COL_WIDTH_DIEM + 6) // Tổng độ rộng + khoảng cách
+#define COL_WIDTH_QUEQUAN 15
+#define COL_TOTAL_WIDTH (COL_WIDTH_STT + COL_WIDTH_MSSV + COL_WIDTH_NAME + COL_WIDTH_DATE + COL_WIDTH_QUEQUAN+5) // Tổng độ rộng + khoảng cách
 
 void printLine() {
 	cout << "\n+" << setfill('-') << setw(COL_TOTAL_WIDTH) << "+";
@@ -225,7 +281,7 @@ void printHeader() {
 	cout << "|";
 	cout << left << setw(COL_WIDTH_DATE) << " NGAY SINH";
 	cout << "|";
-	cout << left << setw(COL_WIDTH_DIEM) << " DIEM TB";
+	cout << left << setw(COL_WIDTH_QUEQUAN) << " QueQuan";
 	cout << "|";
 	printLine();
 }
@@ -241,5 +297,100 @@ void SinhVien::printDataRow(int stt) {
 	cout << "|";
 	cout << left << setw(COL_WIDTH_DATE - 1) << this->ngaySinh << " ";
 	cout << "|";
+	cout << left << setw(COL_WIDTH_DATE - 1) << this->queQuan << " ";
+	cout << "|";
+}
+
+
+// tính điểm TB, ta có điểm quy đổi GPA như sau: 
+//DIEM SO(Thang 10) | DIEM CHU | DIEM QUY DOI(Thang 4.0)
+//-------------------- | ---------- | --------------------------
+//>= 9.0 | A + | 4.0
+//8.5 - 8.9 | A | 4.0
+//8.0 - 8.4 | B + | 3.5
+//7.0 - 7.9 | B | 3.0
+//6.5 - 6.9 | C + | 2.5
+//5.5 - 6.4 | C | 2.0
+//5.0 - 5.4 | D + | 1.5
+//4.0 - 4.9 | D | 1.0
+//< 4.0 | F | 0.0
+double SinhVien::tinhDiemGPA() const
+{
+	double tongDiemTrongSo = 0.0;
+	int tongTinChi = 0;
+	for (const auto& monHoc : this->DSMonHoc) {
+		double diemQuyDoi;
+		// AP DUNG BANG QUY DOI BEN TREN: quy đổi thanh điểm 10 thành thang điểm 4
+		if (monHoc.tongKetMon >= 8.5) { // Bao gom ca A+ va A
+			diemQuyDoi = 4.0;
+		}
+		else if (monHoc.tongKetMon >= 8.0) {
+			diemQuyDoi = 3.5;
+		}
+		else if (monHoc.tongKetMon >= 7.0) {
+			diemQuyDoi = 3.0;
+		}
+		else if (monHoc.tongKetMon >= 6.5) {
+			diemQuyDoi = 2.5;
+		}
+		else if (monHoc.tongKetMon >= 5.5) {
+			diemQuyDoi = 2.0;
+		}
+		else if (monHoc.tongKetMon >= 5.0) {
+			diemQuyDoi = 1.5;
+		}
+		else if (monHoc.tongKetMon >= 4.0) {
+			diemQuyDoi = 1.0;
+		}
+		else {
+			diemQuyDoi = 0.0;
+		}
+		tongDiemTrongSo += diemQuyDoi * monHoc.soTinChi;
+		tongTinChi += monHoc.soTinChi;
+	}
+
+	// tránh trường hợp lỗi khi sinh viên ko có tín chỉ nào
+	if (tongTinChi == 0) {
+		return 0.0;
+	}
+
+	return round((tongDiemTrongSo / tongTinChi) * 100) / 100;
+}
+
+string SinhVien::chuyenDoiSangXepLoai() const
+{
+	// 1. Tính toán GPA hiện tại
+	double gpa = tinhDiemGPA();
+	string xepLoai;
+
+	// 2. Phân loại GPA (Sử dụng các ngưỡng GPA tiêu chuẩn)
+	if (gpa >= 3.6) {
+		xepLoai = "Xuat sac (A+)";
+	}
+	else if (gpa >= 3.2) {
+		xepLoai = "Gioi (A)";
+	}
+	else if (gpa >= 2.5) { // Thường là Khá giỏi/Khá
+		xepLoai = "Kha (B+)";
+	}
+	else if (gpa >= 2.0) {
+		xepLoai = "Trung binh (C)";
+	}
+	else if (gpa >= 1.0) {
+		xepLoai = "Trung binh yeu (D)";
+	}
+	else {
+		xepLoai = "Kem (F)";
+	}
+
+	return xepLoai;
+}
+
+void SinhVien::resetDiemMonHoc()
+{
+	for (auto& monHoc : this->DSMonHoc) {
+		monHoc.tongKetMon = 0;
+	}
+
 }
 
