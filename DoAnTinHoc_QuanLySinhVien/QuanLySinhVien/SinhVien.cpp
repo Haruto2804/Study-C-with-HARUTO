@@ -6,7 +6,6 @@ mt19937 gen(rd()); // Engine được khởi tạo MỘT LẦN
 // gán giá trị ban đầu cho biến counter là 0, nghĩa là chưa có sinh viên nào
 int SinhVien::counter = 0;
 
-
 // hàm tạo sinh viên
 SinhVien::SinhVien()
 {
@@ -41,9 +40,8 @@ void SinhVien::taoDanhSachMonHoc()
 
 
 
-
 	// tạo điểm tổng kết ngẫu nhiên
-	uniform_real_distribution<> distDiem(0.0, 10.0);
+	uniform_real_distribution<> distDiem(4.0, 10.0);
 
 
 
@@ -126,6 +124,7 @@ void SinhVien::taoMaSV() {
 	// chèn các số 0 còn lại vào trước số thứ tự
 	thuTu.insert(0, 5 - thuTu.length(), '0');
 	this->maSV = tienTo + thuTu;
+
 }
 string SinhVien::getMaSV() {
 	return this->maSV;
@@ -177,7 +176,6 @@ void SinhVien::taoNgaySinh()
 	uniform_int_distribution <>khoangNgay(1, layNgayTrongThang(month, year));
 	int day = khoangNgay(gen);
 
-
 	// đổi số sang chuỗi
 	string s_day = to_string(day);
 	string s_month = to_string(month);
@@ -228,7 +226,7 @@ void SinhVien::taoQueQuanNgauNhien() {
 		"Khanh Hoa",      // 24 (Tinh Khanh Hoa)
 		"Lam Dong",       // 25 (Tinh Lam Dong)
 		"Dak Lak",        // 26 (Tinh Dak Lak)
-		"Ho Chi Minh",    // 27 (Thanh pho Ho Chi Minh)
+		"TPHCM",    // 27 (Thanh pho Ho Chi Minh)
 		"Dong Nai",       // 28 (Tinh Dong Nai)
 		"Tay Ninh",       // 29 (Tinh Tay Ninh)
 		"Can Tho",        // 30 (Thanh pho Can Tho)
@@ -244,7 +242,6 @@ void SinhVien::taoQueQuanNgauNhien() {
 }
 void SinhVien::taoNgauNhienDuLieuSinhVien()
 {
-	taoMaSV();
 	taoNgaySinh();
 	taoTenNgauNhien();
 	taoQueQuanNgauNhien();
@@ -260,10 +257,12 @@ void SinhVien::taoNgauNhienDuLieuSinhVien()
 // Đặt độ rộng cố định cho từng cột
 #define COL_WIDTH_STT 5
 #define COL_WIDTH_MSSV 15
-#define COL_WIDTH_NAME 30
-#define COL_WIDTH_DATE 15
+#define COL_WIDTH_NAME 20
+#define COL_WIDTH_DATE 12
 #define COL_WIDTH_QUEQUAN 15
-#define COL_TOTAL_WIDTH (COL_WIDTH_STT + COL_WIDTH_MSSV + COL_WIDTH_NAME + COL_WIDTH_DATE + COL_WIDTH_QUEQUAN+5) // Tổng độ rộng + khoảng cách
+#define COL_WIDTH_GPA 10  // Tăng lên 7 để chứa 'X.XX '
+#define COL_WIDTH_XEPLOAI 20// Tăng lên 15 để chứa 'Xuat sac (A+)'
+#define COL_TOTAL_WIDTH (COL_WIDTH_STT + COL_WIDTH_MSSV + COL_WIDTH_NAME + COL_WIDTH_DATE + COL_WIDTH_QUEQUAN + COL_WIDTH_GPA + COL_WIDTH_XEPLOAI + 8) // Tổng độ rộng + khoảng cách
 
 void printLine() {
 	cout << "\n+" << setfill('-') << setw(COL_TOTAL_WIDTH) << "+";
@@ -274,31 +273,40 @@ void printHeader() {
 	printLine();
 	cout << "\n|";
 	cout << left << setw(COL_WIDTH_STT) << " STT";
-	cout << "|";
-	cout << left << setw(COL_WIDTH_MSSV) << " MA SINH VIEN";
-	cout << "|";
-	cout << left << setw(COL_WIDTH_NAME) << " HO TEN";
-	cout << "|";
-	cout << left << setw(COL_WIDTH_DATE) << " NGAY SINH";
-	cout << "|";
-	cout << left << setw(COL_WIDTH_QUEQUAN) << " QueQuan";
+	cout << "|" << left << setw(COL_WIDTH_MSSV) << " MA SINH VIEN";
+	cout << "|" << left << setw(COL_WIDTH_NAME) << " HO TEN";
+	cout << "|" << left << setw(COL_WIDTH_DATE) << " NGAY SINH";
+	cout << "|" << left << setw(COL_WIDTH_QUEQUAN) << " QUE QUAN";
+	cout << "|" << left << setw(COL_WIDTH_GPA) << " GPA"; // Dùng COL_WIDTH_GPA
+	cout << "|" << left << setw(COL_WIDTH_XEPLOAI) << " XEP LOAI"; // Dùng COL_WIDTH_XEPLOAI
 	cout << "|";
 	printLine();
 }
 
 void SinhVien::printDataRow(int stt) {
+	double gpa = tinhDiemGPA();
+	string xepLoai = chuyenDoiSangXepLoai();
+
+	// *** THÊM ĐỊNH DẠNG SỐ THỰC ***
+	cout << fixed << setprecision(2);
+
 	// In dòng dữ liệu của sinh viên
 	cout << "\n|";
-	cout << left << setw(COL_WIDTH_STT - 1) << stt << " "; // Căn phải STT
+	cout << left << setw(COL_WIDTH_STT - 1) << stt << " ";
+	cout << "|" << left << setw(COL_WIDTH_MSSV - 1) << this->maSV << " ";
+	cout << "|" << left << setw(COL_WIDTH_NAME - 1) << this->hoTenSV << " ";
+	cout << "|" << left << setw(COL_WIDTH_DATE - 1) << this->ngaySinh << " ";
+	cout << "|" << left << setw(COL_WIDTH_QUEQUAN - 1) << this->queQuan << " ";
+
+	// GPA (Căn phải để số thập phân thẳng hàng)
+	cout << "|" << left << setw(COL_WIDTH_GPA - 1) << gpa << " "; // Dùng COL_WIDTH_GPA
+
+	// Xếp Loại
+	cout << "|" << left << setw(COL_WIDTH_XEPLOAI - 1) << xepLoai << " "; // Dùng COL_WIDTH_XEPLOAI
 	cout << "|";
-	cout << left << setw(COL_WIDTH_MSSV - 1) << this->maSV << " ";
-	cout << "|";
-	cout << left << setw(COL_WIDTH_NAME - 1) << this->hoTenSV << " ";
-	cout << "|";
-	cout << left << setw(COL_WIDTH_DATE - 1) << this->ngaySinh << " ";
-	cout << "|";
-	cout << left << setw(COL_WIDTH_DATE - 1) << this->queQuan << " ";
-	cout << "|";
+
+	// *** TRẢ LẠI ĐỊNH DẠNG MẶC ĐỊNH CHO CÁC PHẦN SAU ***
+	cout << setprecision(6);
 }
 
 
@@ -354,7 +362,7 @@ double SinhVien::tinhDiemGPA() const
 		return 0.0;
 	}
 
-	return round((tongDiemTrongSo / tongTinChi) * 100) / 100;
+	return round((tongDiemTrongSo / tongTinChi) * 100.0) / 100.0;
 }
 
 string SinhVien::chuyenDoiSangXepLoai() const
@@ -394,3 +402,50 @@ void SinhVien::resetDiemMonHoc()
 
 }
 
+// hàm dùng ghiFile thông tin sinh viên ra file
+void SinhVien::ghiFile(int &stt, std::ofstream &ghi_file)
+{
+	
+	double gpa = tinhDiemGPA();
+	ghi_file << stt<<","<< maSV << "," << hoTenSV << "," << ngaySinh << "," << queQuan << "," << tinhDiemGPA() << "," << chuyenDoiSangXepLoai() << "\n\n";
+
+}
+
+void SinhVien::ghiBangDiemSinhVien(const string& TenFile)
+{
+	std::ofstream ghi_File(TenFile, std::ios::out,std::ios::trunc);
+	if (!ghi_File.is_open()) {
+		std::cerr << "Loi mo file: " << "File " << TenFile << " ! Khong the ghi du lieu." << std::endl;
+	}
+	//lấy danh sách các môn của sinh viên và duyệt
+	ghi_File << "BANG DIEM CAC MON CUA SINH VIEN CO MA SINH VIEN LA " << getMaSV() << endl;
+	ghi_File << "STT" << ". " << "maMon" << ", " << "tenMon" << ", " << "soTinChi" << ", " << "mh.tongKetMon" << "\n\n";
+	std::vector<MonHoc> dsMH = getDSMonHoc();
+	int counter = 0;
+	for (const auto& mh : dsMH) {
+		ghi_File << ++counter << ". " << mh.maMon << "," << mh.tenMon << "," << mh.soTinChi << "," << mh.tongKetMon << endl;
+	}
+	ghi_File.close();
+}
+
+
+void AVLTree::xuatDanhSachSinhVienTheoThuTuTangDanMSSV(NodePtr T)
+{
+	printHeader();
+	if (T != nullptr) {
+		LNR(T->left);
+
+		// Thăm nút hiện tại (N)
+		 static int counter = 0;
+		 counter++;
+		T->data.printDataRow(counter);
+		printLine(); // Kẻ dòng sau mỗi sinh viên
+
+		LNR(T->right);
+
+		// Quan trọng: Phải reset counter sau khi duyệt xong toàn bộ cây (chỉ ở nút gốc)
+		if (T == this->head) {
+			counter = 0;
+		}
+	}
+}

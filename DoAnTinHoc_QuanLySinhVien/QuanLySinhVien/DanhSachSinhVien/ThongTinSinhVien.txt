@@ -1,0 +1,44 @@
+============================DANH SACH SINH VIEN============================
+STT,MaSV,Hoten,NgaySinh,QueQuan,XepLoai
+1,DH52300001,Mai Thanh Tien,05/04/2005,Quang Ngai,2.1,Trung binh (C)
+
+2,DH52300002,Mai Huy Hai,01/09/2005,Tay Ninh,2.38,Trung binh (C)
+
+3,DH52300003,Hoang Van Hoai,09/06/2005,Ca Mau,2.17,Trung binh (C)
+
+4,DH52300004,Tran Gia Khang,28/07/2005,Lao Cai,2.99,Kha (B+)
+
+5,DH52300005,Hoang Thi Bao,02/07/2005,Thai Nguyen,2.79,Kha (B+)
+
+6,DH52300006,Doan Quoc Khang,07/10/2005,Nghe An,2.61,Kha (B+)
+
+7,DH52300007,Tran Huu Chau,23/09/2005,Lao Cai,2.79,Kha (B+)
+
+8,DH52300008,Pham Nhat Minh,16/09/2005,Phu Tho,2.89,Kha (B+)
+
+9,DH52300009,Mai Quoc Bao,28/10/2005,Phu Tho,3.12,Kha (B+)
+
+10,DH52300010,Nguyen Nhat Binh,14/05/2005,Ninh Binh,2.97,Kha (B+)
+
+============================DANH SACH SINH VIEN============================
+STT,MaSV,Hoten,NgaySinh,QueQuan,XepLoai
+1,DH52300001,Mai Huu An,06/07/2005,Tay Ninh,2.94,Kha (B+)
+
+2,DH52300002,Pham Quoc Thuy,17/09/2005,Son La,2.8,Kha (B+)
+
+3,DH52300003,Doan Thanh Bao,13/08/2005,Gia Lai,2.43,Trung binh (C)
+
+4,DH52300004,Tran Nhat Khoa,01/03/2005,TPHCM,2.67,Kha (B+)
+
+5,DH52300005,Mai Thi Hao,19/02/2005,Cao Bang,2.36,Trung binh (C)
+
+6,DH52300006,Tran Huu Thuy,04/04/2005,Dong Thap,2.1,Trung binh (C)
+
+7,DH52300007,Mai Huynh Khoa,18/06/2005,Cao Bang,2.47,Trung binh (C)
+
+8,DH52300008,Pham Quoc Minh,26/12/2005,Da Nang,2.94,Kha (B+)
+
+9,DH52300009,Doan Thi Linh,08/09/2005,Bac Ninh,2.49,Trung binh (C)
+
+10,DH52300010,Doan Quoc Thuy,05/02/2005,Thai Nguyen,2.69,Kha (B+)
+

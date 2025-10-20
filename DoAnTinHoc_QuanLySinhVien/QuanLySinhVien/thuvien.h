@@ -4,6 +4,7 @@
 #include <random> // thư viện cho việc tạo sinh số ngẫu nhiên
 #include "cmath" // thư viện cho việc làm tròn (round)
 #include <vector>
+#include <fstream> // thư viện dùng cho đọc/ghi file
 using namespace std;
 struct MonHoc {
 	string maMon;
@@ -58,6 +59,8 @@ public:
 	double tinhDiemGPA()const;
 	string chuyenDoiSangXepLoai() const;
 	void resetDiemMonHoc();
+	void ghiFile(int& stt, std::ofstream& ghi_file);
+	void ghiBangDiemSinhVien(const string& TenFile);
 };
 
 struct Node{
@@ -96,7 +99,7 @@ public:
 
 	// dùng hàm bọc để dùng cho main sau khi gọi hàm này thì hàm bọc sẽ gọi hàm insert ở dưới
 	void insertSV(SinhVien data);
-	NodePtr insertSV(NodePtr T, SinhVien data); // hàm chèn Sinh viên vào cây AVL
+	NodePtr insertSV(NodePtr T,  SinhVien data); // hàm chèn Sinh viên vào cây AVL
 
 	void deleteSV(string maSVCanXoa);
 	NodePtr deleteSV(NodePtr T, string maSVCanXoa);
@@ -122,10 +125,14 @@ public:
 	void RNL(NodePtr T);
 	void LNR(NodePtr T);
 	void xuatDanhSachSinhVienTheoThuTuTangDanMSSV(NodePtr T);
-
 	//xuất danh sách môn hoc theo maSV
 	void xuatDanhSachMonHocTheoMaSV(const string& maSV);
+	void locSinhVienTheoDiemGPA(const double& minGPA);
+	void locSinhVienTheoGPA_Recursive(NodePtr T, const double& minGPA);
+	void inDanhSachSinhVien(const string& tenFile);
+	void inDanhSachSinhVien(NodePtr T, int &stt, std::ofstream &os);
 };
+
 
 bool checkNamNhuan(int year);
 int layNgayTrongThang(int month, int year);

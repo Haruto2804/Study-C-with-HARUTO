@@ -27,7 +27,7 @@ void AVLTree::insertSV(SinhVien data)
 }
 
 // HÀM THÊM SINH VIÊN
-NodePtr AVLTree::insertSV(NodePtr T, SinhVien data)
+NodePtr AVLTree::insertSV(NodePtr T,  SinhVien data)
 {	// nếu cây rỗng, tạo node mới cho nó rồi trả cho head là nút mới
 	if (T == nullptr) {
 		return createNode(data);
@@ -329,27 +329,7 @@ void AVLTree::LNR(NodePtr T) {
 
 
 
-void AVLTree::xuatDanhSachSinhVienTheoThuTuTangDanMSSV(NodePtr T)
-{
-	printHeader();
-	if (T != nullptr) {
-		LNR(T->left);
 
-		// Thăm nút hiện tại (N)
-		static int stt_counter = 0; // Biến tĩnh chỉ khởi tạo một lần
-		stt_counter++;
-
-		T->data.printDataRow(stt_counter);
-		printLine(); // Kẻ dòng sau mỗi sinh viên
-
-		LNR(T->right);
-
-		// Quan trọng: Phải reset counter sau khi duyệt xong toàn bộ cây (chỉ ở nút gốc)
-		if (T == this->head) {
-			stt_counter = 0;
-		}
-	}
-}
 
 
 
@@ -365,6 +345,74 @@ void AVLTree::xuatDanhSachMonHocTheoMaSV(const string& maSV)
 		p->data.xuatMonHocCuaSinhVien(p->data);
 	}
 }
+
+void AVLTree::locSinhVienTheoDiemGPA(const double& minGPA)
+{
+	cout << "\nDANH SACH SINH VIEN CO DIEM GPA >= " << round(minGPA * 100.0) / 100.0;
+	printHeader();
+	locSinhVienTheoGPA_Recursive(this->head, minGPA);
+}
+
+void AVLTree::locSinhVienTheoGPA_Recursive(NodePtr T, const double& minGPA)
+{
+	if (T == nullptr) {
+		return;
+	}
+	// duyệt NLR
+	locSinhVienTheoGPA_Recursive(T->left, minGPA);
+
+	// tiến hành lọc
+	static int stt = 0;
+	stt++;
+	SinhVien& sv = T->data;
+	double gpa = sv.tinhDiemGPA();
+	if (gpa >= minGPA) {
+		sv.printDataRow(stt);
+		printLine();
+	}
+
+
+	locSinhVienTheoGPA_Recursive(T->right, minGPA);
+}
+
+void AVLTree::inDanhSachSinhVien(const string& tenFile)
+{
+
+	std::ofstream ghi_File(tenFile, std::ios::app);
+	if (!ghi_File.is_open()) {
+		std::cerr << "Loi mo file: " << "File "<<tenFile << " ! Khong the ghi du lieu." << std::endl;
+		return;
+	}
+	if(ghi_File.good()) {
+		std::cerr << "File "<< tenFile<<" da ton tai. " << "Vui long chon ten khac!" << std::endl;
+		return;
+	}
+	 int stt = 0;
+	 ghi_File << "============================DANH SACH SINH VIEN============================"<< endl;
+	 ghi_File << "STT,MaSV,Hoten,NgaySinh,QueQuan,XepLoai" << endl;
+	inDanhSachSinhVien(this->head, stt, ghi_File);
+	ghi_File.close();
+	cout << "\nGhi file thanh cong!";
+}
+
+void AVLTree::inDanhSachSinhVien(NodePtr T,int &stt, std::ofstream &os)
+{
+	if (T != NULL) { 
+		// Left Node Right
+		inDanhSachSinhVien(T->left,stt,os);
+
+		// xử lí
+		stt++;
+		SinhVien sv = T->data;
+		sv.ghiFile(stt, os);
+		inDanhSachSinhVien(T->right, stt, os);
+
+	}
+}
+	
+
+
+// hàm dùng để đọc file
 
 
 
