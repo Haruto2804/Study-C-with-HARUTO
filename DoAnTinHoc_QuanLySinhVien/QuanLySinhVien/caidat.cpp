@@ -21,13 +21,15 @@ void AVLTree::deleteTree(NodePtr T)
 
 
 // HÀM BỌC THÊM SINH VIÊN
-void AVLTree::insertSV(SinhVien data)
+bool AVLTree::insertSV(SinhVien data)
 {
-	this->head = insertSV(this->head, data);
+	bool result = true;
+	this->head = insertSV(this->head, data, result);
+	return result;
 }
 
 // HÀM THÊM SINH VIÊN
-NodePtr AVLTree::insertSV(NodePtr T,  SinhVien data)
+NodePtr AVLTree::insertSV(NodePtr T,  SinhVien data, bool &result)
 {	// nếu cây rỗng, tạo node mới cho nó rồi trả cho head là nút mới
 	if (T == nullptr) {
 		return createNode(data);
@@ -40,15 +42,15 @@ NodePtr AVLTree::insertSV(NodePtr T,  SinhVien data)
 		string maSVData = data.getMaSV();
 		// TH1: nếu maSVCuaNode đang xét > MaSV của sinh viên muốn thêm vào thì đi qua trái của cây, gọi đệ quy
 		if (maSVCuaNode > maSVData) {
-			T->left = insertSV(T->left, data);
+			T->left = insertSV(T->left, data,result);
 		}
 		// TH2: nếu maSVCuaNode đang xét < MaSV của sinh viên muốn thêm vào thì đi qua phải của cây, gọi đệ quy
 		else if (maSVCuaNode < maSVData) {
-			T->right = insertSV(T->right, data);
+			T->right = insertSV(T->right, data,result);
 		}
 		// TH3: Nếu = là đã có sinh viên đó rồi nên không cần thêm nữa
 		else {
-			cout << "\nDa ton tai sinh vien co ma so la " << maSVData << " trong danh sach!";
+			result = false;
 			return T;
 		}
 	}
@@ -83,12 +85,14 @@ NodePtr AVLTree::insertSV(NodePtr T,  SinhVien data)
 
 // HÀM BỌC XÓA SINH VIÊN+
 
-void AVLTree::deleteSV(string maSVCanXoa) {
-	this->head = deleteSV(this->head, maSVCanXoa);
+bool AVLTree::deleteSV(string maSVCanXoa) {
+bool result = false;
+	this->head = deleteSV(this->head, maSVCanXoa, result);
+	return result;
 }
 
 // HÀM XÓA SINH VIÊN
-NodePtr AVLTree::deleteSV(NodePtr T, string maSVCanXoa)
+NodePtr AVLTree::deleteSV(NodePtr T, string maSVCanXoa, bool &result)
 {
 	// TÌM SINH VIÊN CẦN XÓA TRONG CÂY ÁP DỤNG TÌM KIẾM THEO QUY TẮC CÂY NHỊ PHÂN
 	if (T == nullptr) {
@@ -98,14 +102,15 @@ NodePtr AVLTree::deleteSV(NodePtr T, string maSVCanXoa)
 		string maSVCuaNut = T->data.getMaSV();
 		// qua trái
 		if (maSVCuaNut > maSVCanXoa) {
-			T->left = deleteSV(T->left, maSVCanXoa);
+			T->left = deleteSV(T->left, maSVCanXoa, result);
 		}
 		//qua phải
 		else if (maSVCuaNut < maSVCanXoa) {
-			T->right = deleteSV(T->right, maSVCanXoa);
+			T->right = deleteSV(T->right, maSVCanXoa, result);
 		}
 		// tìm thấy nút cần xóa
 		else if (maSVCuaNut == maSVCanXoa) {
+			result = true;
 			//Xử lí xóa:
 			NodePtr temp = T;
 			// TH1: cây 1 con:
@@ -405,9 +410,45 @@ void AVLTree::inDanhSachSinhVien(NodePtr T,int &stt, std::ofstream &os)
 		stt++;
 		SinhVien sv = T->data;
 		sv.ghiFile(stt, os);
+
+
 		inDanhSachSinhVien(T->right, stt, os);
 
 	}
+}
+
+std::vector<SinhVien> AVLTree::locSinhVienTheoTuKhoa(const string& keyword, bool &isEmpty) {
+	// tạo danh sách để chứa sinh viên
+	// ta dùng mảng động để lưu trữ danh sách sinh viên
+	vector <SinhVien> DSSV;
+	locSinhVienTheoTuKhoa(this->head, keyword, DSSV);
+	cout << "\nDanh sach sinh vien sau voi tu khoa " << keyword << endl;
+	int i = 0;
+	if (!DSSV.empty()) { // kiểm tra danh sách có rỗng hay ko
+		isEmpty = false; // nếu ko rỗng thì đánh dấu là true
+	}
+	for (const SinhVien& sv : DSSV) {
+		cout << "\nThong tin sinh vien " << ++i;
+		sv.inThongTinSinhVien();
+		cout << endl;
+	}
+	return DSSV;
+}
+void AVLTree::locSinhVienTheoTuKhoa(NodePtr T, const string& keyword, std::vector<SinhVien>& DSSV)
+{
+	// duyệt LNR
+	if (T == nullptr) {
+		return;
+	}
+	locSinhVienTheoTuKhoa(T->left, keyword, DSSV);
+	// xử lí
+	SinhVien &sv = T->data; //lấy sinh viên tại node
+	if (sv.sinhVienChuaTuKhoa(keyword)) { // nếu sinh viên chứa từ khóa
+		// đẩy sinh viên vào mảng động, danh sách
+		DSSV.push_back(sv);
+	}
+	locSinhVienTheoTuKhoa(T->right, keyword, DSSV);
+
 }
 	
 

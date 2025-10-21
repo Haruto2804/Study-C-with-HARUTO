@@ -1,18 +1,34 @@
-BANG DIEM CAC MON CUA SINH VIEN CO MA SINH VIEN LA DH52300070
+BANG DIEM CAC MON CUA SINH VIEN CO MA SO LA DH52300070
+
 STT. maMon, tenMon, soTinChi, mh.tongKetMon
 
-1. IE101,Co so ha tang cong nghe thong tin,3,9.2
-2. IE102,Cac cong nghe nen,3,4.1
-3. IE103,Quan ly du an,4,5.1
-4. IE104,Internet va cong nghe Web,4,7.1
-5. IE101,Co so ha tang cong nghe thong tin,3,7.4
-6. CS101,Cau truc du lieu va giai thuat,4,8.3
-7. CS102,Lap trinh huong doi tuong,4,7.9
-8. MA001,Giai tich 1,4,5.1
-9. MA002,Dai so tuyen tinh,4,5.8
-10. NT101,Mang may tinh,4,4.4
-11. CS111,He dieu hanh,4,9.4
-12. IS201,He quan tri co so du lieu,4,9.6
-13. PH001,Vat ly 1,3,4.5
-14. EN001,Tieng Anh 1,3,9
-15. SE101,Nhap mon Cong nghe phan mem,3,5.3
+1. IE101,Co so ha tang cong nghe thong tin,3,7.9
+
+2. IE102,Cac cong nghe nen,3,7
+
+3. IE103,Quan ly du an,4,5.2
+
+4. IE104,Internet va cong nghe Web,4,9.2
+
+5. IE101,Co so ha tang cong nghe thong tin,3,5.1
+
+6. CS101,Cau truc du lieu va giai thuat,4,4.6
+
+7. CS102,Lap trinh huong doi tuong,4,5.2
+
+8. MA001,Giai tich 1,4,5.2
+
+9. MA002,Dai so tuyen tinh,4,8.2
+
+10. NT101,Mang may tinh,4,9.7
+
+11. CS111,He dieu hanh,4,6.5
+
+12. IS201,He quan tri co so du lieu,4,5.6
+
+13. PH001,Vat ly 1,3,9.4
+
+14. EN001,Tieng Anh 1,3,4.1
+
+15. SE101,Nhap mon Cong nghe phan mem,3,8.3
+

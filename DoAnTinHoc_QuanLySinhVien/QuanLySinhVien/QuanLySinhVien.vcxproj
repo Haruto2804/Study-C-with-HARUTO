@@ -132,7 +132,7 @@
   <ItemGroup>
     <ClCompile Include="caidat.cpp" />
     <ClCompile Include="chuongtrinh.cpp" />
-    <ClCompile Include="DateUtils.cpp" />
+    <ClCompile Include="utils.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MonHoc.cpp" />
     <ClCompile Include="SinhVien.cpp" />

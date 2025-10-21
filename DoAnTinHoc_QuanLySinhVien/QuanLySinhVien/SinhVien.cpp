@@ -9,8 +9,11 @@ int SinhVien::counter = 0;
 // hàm tạo sinh viên
 SinhVien::SinhVien()
 {
-	this->taoDanhSachMonHoc();
-	taoNgauNhienDuLieuSinhVien();
+	taoDanhSachMonHoc();
+	this->hoTenSV = "";
+	this->maSV = "";
+	this->queQuan = "";
+	this->ngaySinh = "";
 }
 
 void SinhVien::taoDanhSachMonHoc()
@@ -94,7 +97,6 @@ void SinhVien::nhapThongTinSinhVien() {
 	cout << "\nNhap Que quan cua sinh vien: ";
 	cin >> this->queQuan;
 	cin.ignore();
-	cin.ignore();
 }
 void SinhVien::nhapThongTinSinhVien(string hoTenSV, string maSV, string ngaySinh, string queQuan)
 {
@@ -103,7 +105,7 @@ void SinhVien::nhapThongTinSinhVien(string hoTenSV, string maSV, string ngaySinh
 	this->ngaySinh = ngaySinh;
 	this->queQuan = queQuan;
 }
-void SinhVien::inThongTinSinhVien() {
+void SinhVien::inThongTinSinhVien() const{
 
 	double gpa = tinhDiemGPA();
 	cout << "\nHo ten sinh vien: " << this->hoTenSV;
@@ -126,7 +128,7 @@ void SinhVien::taoMaSV() {
 	this->maSV = tienTo + thuTu;
 
 }
-string SinhVien::getMaSV() {
+string SinhVien::getMaSV() const {
 	return this->maSV;
 }
 void SinhVien::taoTenNgauNhien() {
@@ -403,7 +405,7 @@ void SinhVien::resetDiemMonHoc()
 }
 
 // hàm dùng ghiFile thông tin sinh viên ra file
-void SinhVien::ghiFile(int &stt, std::ofstream &ghi_file)
+void SinhVien::ghiFile(int &stt, std::ofstream &ghi_file) const
 {
 	
 	double gpa = tinhDiemGPA();
@@ -415,17 +417,77 @@ void SinhVien::ghiBangDiemSinhVien(const string& TenFile)
 {
 	std::ofstream ghi_File(TenFile, std::ios::out,std::ios::trunc);
 	if (!ghi_File.is_open()) {
-		std::cerr << "Loi mo file: " << "File " << TenFile << " ! Khong the ghi du lieu." << std::endl;
+		std::cerr << "Loi mo file: " << "File " << TenFile << " ! Khong the ghi du lieu." << endl;
 	}
 	//lấy danh sách các môn của sinh viên và duyệt
-	ghi_File << "BANG DIEM CAC MON CUA SINH VIEN CO MA SINH VIEN LA " << getMaSV() << endl;
+	ghi_File << "BANG DIEM CAC MON CUA SINH VIEN CO MA SO LA " << getMaSV() << "\n\n";
 	ghi_File << "STT" << ". " << "maMon" << ", " << "tenMon" << ", " << "soTinChi" << ", " << "mh.tongKetMon" << "\n\n";
 	std::vector<MonHoc> dsMH = getDSMonHoc();
 	int counter = 0;
 	for (const auto& mh : dsMH) {
-		ghi_File << ++counter << ". " << mh.maMon << "," << mh.tenMon << "," << mh.soTinChi << "," << mh.tongKetMon << endl;
+		ghi_File << ++counter << ". " << mh.maMon << "," << mh.tenMon << "," << mh.soTinChi << "," << mh.tongKetMon << "\n\n";
 	}
 	ghi_File.close();
+}
+
+void SinhVien::setTenSV(const string& tenMoi)
+{
+	this->hoTenSV = tenMoi;
+}
+
+void SinhVien::setMaSV(const string& maSVMoi)
+{
+	this->maSV = maSVMoi;
+}
+void SinhVien::setNgaySinh(const string& ngaySinhMoi)
+{
+	this->ngaySinh = ngaySinhMoi;
+}
+void SinhVien::setQueQuan(const string& queQuanMoi)
+{
+	this->queQuan = queQuanMoi;
+}
+
+string SinhVien::getHoTenSV() const
+{
+	return this->hoTenSV;
+}
+
+// hàm này kiểm tra các trường của sinh viên có từ khóa hay ko
+bool SinhVien::sinhVienChuaTuKhoa(const string& keyword)
+{
+
+	//chuyển đổi keyword thành chữ thường
+	string chuyen_doi_keyword = chuyenChuHoaThanhChuThuong(keyword);
+	// đổi các trường của sinh viên thành chữ thường
+	string chuyen_doi_maSV = chuyenChuHoaThanhChuThuong(this->maSV);
+	string chuyen_doi_hoTen = chuyenChuHoaThanhChuThuong(this->hoTenSV);
+	string chuyen_doi_queQuan = chuyenChuHoaThanhChuThuong(this->queQuan);
+	string chuyen_doi_ngaySinh = chuyenChuHoaThanhChuThuong(this->ngaySinh);
+
+
+
+	// thực hiện tìm kiếm trên từng trường
+
+	if (chuyen_doi_maSV.find(chuyen_doi_keyword) != std::string::npos) // tìm thấy có từ khóa
+	{
+		return true;
+	}
+	if (chuyen_doi_hoTen.find(chuyen_doi_keyword) != std::string::npos) // tìm thấy có từ khóa
+	{
+		return true;
+	}
+
+	if (chuyen_doi_ngaySinh.find(chuyen_doi_keyword) != std::string::npos) // tìm thấy có từ khóa
+	{
+		return true;
+	}
+	if (chuyen_doi_queQuan.find(chuyen_doi_keyword) != std::string::npos) // tìm thấy có từ khóa
+	{
+		return true;
+	}
+	// nếu ko tìm thấy
+	return false;
 }
 
 
@@ -447,5 +509,19 @@ void AVLTree::xuatDanhSachSinhVienTheoThuTuTangDanMSSV(NodePtr T)
 		if (T == this->head) {
 			counter = 0;
 		}
+	}
+}
+void inDanhSachSinhVienRaFile_Vector( const vector<SinhVien> &DSSV, const string &tenFile) // xuất bằng vector
+{
+	string tenFileMoi = taoTenFileThoiGian(tenFile);
+	cout << tenFileMoi;
+	std::ofstream fileOut(tenFileMoi,std::ios::out);
+	if (!fileOut.is_open()) {
+		std::cerr << "Loi doc file: " << " Vui long thu lai sau!";
+		return;
+	}
+	int stt = 0;
+	for ( const SinhVien& sv : DSSV) {
+		sv.ghiFile(++stt, fileOut);
 	}
 }

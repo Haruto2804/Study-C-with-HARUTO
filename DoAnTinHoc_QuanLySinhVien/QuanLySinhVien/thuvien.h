@@ -3,8 +3,14 @@
 #include <iomanip> // thư viện cho việc định dạng output
 #include <random> // thư viện cho việc tạo sinh số ngẫu nhiên
 #include "cmath" // thư viện cho việc làm tròn (round)
-#include <vector>
+#include <vector> // dùng cho tạo mảng động
 #include <fstream> // thư viện dùng cho đọc/ghi file
+#include <cctype> // dùng cho tolower
+#include <ctime>   // Dùng cho time_t và localtime
+#pragma warning(disable : 4996)// tắt thông báo lỗi đọc/ghi file
+#define _CRT_SECURE_NO_WARNINGS // tắt thông báo lỗi đọc/ghi file
+
+
 using namespace std;
 struct MonHoc {
 	string maMon;
@@ -26,7 +32,7 @@ public:
 	//tạo danh sách môn học
 	void taoDanhSachMonHoc();
 
-	//getter,setter
+
 	// lấy danh sách môn học ủa sinh viên đó - ko thay đổi dữ liệu môn học
 	const vector<MonHoc>& getDSMonHoc() const {
 		return DSMonHoc;
@@ -45,7 +51,7 @@ public:
 
 
 	// hàm in thông tin của sinh viên
-	void inThongTinSinhVien();
+	void inThongTinSinhVien() const;
 	// các hàm tạo dữ liệu ngẫu nhiên, để check kết quả cho nhanh
 	void taoMaSV();
 	void taoTenNgauNhien();
@@ -53,14 +59,26 @@ public:
 	void taoNgauNhienDuLieuSinhVien();
 	void taoQueQuanNgauNhien();
 
-	string getMaSV();
+
 	// lấy data từ sinh viên
 	void printDataRow(int stt);
 	double tinhDiemGPA()const;
 	string chuyenDoiSangXepLoai() const;
 	void resetDiemMonHoc();
-	void ghiFile(int& stt, std::ofstream& ghi_file);
+	void ghiFile(int& stt, std::ofstream& ghi_file) const;
 	void ghiBangDiemSinhVien(const string& TenFile);
+	//getter,setter
+	string getMaSV() const;
+	string getHoTenSV() const;
+
+	void setTenSV(const string& tenMoi);
+	void setMaSV(const string& maSVMoi);
+	void setNgaySinh(const string& ngaySinhMoi);
+	void setQueQuan(const string& queQuanMoi);
+	
+	// tạo hàm kiểm tra sinh viên có chứa từ khóa hay ko, trả về bool
+	bool sinhVienChuaTuKhoa(const string& keyword);
+
 };
 
 struct Node{
@@ -80,6 +98,7 @@ typedef Node* NodePtr;
 class AVLTree {
 private:
 	NodePtr head; // cho head là private nhằm che dấu dữ liệu của cây
+	// ta sẽ dùng vector - mảng động, để lưu trữ danh sách sinh viên đã lọc
 
 public:
 	//Tạo hàm tạo gán head ban đầu là null
@@ -98,11 +117,11 @@ public:
 
 
 	// dùng hàm bọc để dùng cho main sau khi gọi hàm này thì hàm bọc sẽ gọi hàm insert ở dưới
-	void insertSV(SinhVien data);
-	NodePtr insertSV(NodePtr T,  SinhVien data); // hàm chèn Sinh viên vào cây AVL
+	bool insertSV(SinhVien data);
+	NodePtr insertSV(NodePtr T,  SinhVien data, bool &result); // hàm chèn Sinh viên vào cây AVL
 
-	void deleteSV(string maSVCanXoa);
-	NodePtr deleteSV(NodePtr T, string maSVCanXoa);
+	bool deleteSV(string maSVCanXoa);
+	NodePtr deleteSV(NodePtr T, string maSVCanXoa, bool &result);
 	
 	NodePtr search(string maSVCanTim);
 	NodePtr search(NodePtr T, string maSVCanTim);
@@ -131,13 +150,24 @@ public:
 	void locSinhVienTheoGPA_Recursive(NodePtr T, const double& minGPA);
 	void inDanhSachSinhVien(const string& tenFile);
 	void inDanhSachSinhVien(NodePtr T, int &stt, std::ofstream &os);
+
+
+	// ta xây 
+	// ta sẽ xây dựng hàm có chức năng xuất các sinh viên khớp với từ khóa và cho phép
+	// người dùng có thể lưu vào FILE để xem, ở đây hàm này trả về danh sách sinh viên khớp với từ khóa
+
+	std::vector<SinhVien> locSinhVienTheoTuKhoa(const string& keyword, bool &isEmpty);
+	void locSinhVienTheoTuKhoa(NodePtr T, const string& keyword, std::vector<SinhVien> &DSSV);
 };
 
 
+string chuyenChuHoaThanhChuThuong(const string &chuoigoc);
 bool checkNamNhuan(int year);
 int layNgayTrongThang(int month, int year);
 void printHeader();
 void printLine();
 NodePtr findMAX(NodePtr T);
 void showBasicMenu();
-
+void switchCaseForChoice(AVLTree& DSSV);
+void inDanhSachSinhVienRaFile_Vector(const vector<SinhVien>& DSSV,const string &tenFile);
+string taoTenFileThoiGian(const string& tenGoc);

@@ -29,7 +29,7 @@
     <ClCompile Include="SinhVien.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DateUtils.cpp">
+    <ClCompile Include="utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MonHoc.cpp">

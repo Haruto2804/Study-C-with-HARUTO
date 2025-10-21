@@ -1,14 +1,14 @@
 ﻿#include "thuvien.h"
 int main() {
-    AVLTree DSSV;
+	AVLTree DSSV;
+	for (int i = 0; i < 10000; ++i) {
+		SinhVien sv;
+		sv.taoNgauNhienDuLieuSinhVien(); // Hàm này chứa taoMaSV()
+		sv.taoMaSV();
+		DSSV.insertSV(sv);
+	}
 
-    for (int i = 0;i < 70;i++) {
-        int stt = i+1;
-        SinhVien sv;
-        sv.taoMaSV();
-        DSSV.insertSV(sv);
-        sv.ghiBangDiemSinhVien("DH52300151.txt");
-    }
-    DSSV.xuatDanhSachSinhVienTheoThuTuTangDanMSSV();
-    return 0;
+	cout << "Da khoi tao 5 sinh vien ngau nhien." << endl;
+	switchCaseForChoice(DSSV);
+	return 0;
 }
